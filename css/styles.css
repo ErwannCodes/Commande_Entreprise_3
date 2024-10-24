@@ -1,71 +1,177 @@
-/* Global styles */
-body {
-    font-family: Arial, sans-serif;
+/* Reset */
+* {
     margin: 0;
     padding: 0;
-    background-color: #e0f7fa; /* Light blue inspired by the river */
-    color: #333;
+    box-sizing: border-box;
 }
 
-h2 {
-    text-align: center;
-    color: #2e7d32; /* Dark green inspired by the trees */
-    margin-bottom: 20px;
+body {
+    font-family: Arial, sans-serif;
 }
 
-/* Container for the form */
-.contact-form-section {
+/* Header navigation */
+.navigation {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh; /* Full screen height */
-    background: linear-gradient(to bottom, #81c784, #4fc3f7); /* Gradient inspired by green hills and blue sky */
+    padding: 1rem;
+    margin-left: 1rem;
+    position: relative;
 }
 
-.form-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
-    box-sizing: border-box;
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-label {
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.site-title {
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #2e7d32; /* Dark green for labels */
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #81c784; /* Light green for input borders */
-    border-radius: 5px;
-    box-sizing: border-box;
+.main-nav {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
 
-input[type="submit"] {
-    background-color: #4fc3f7; /* Blue button inspired by the river */
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav ul li {
+    list-style: none;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.join-btn {
+    background-color: #3e5d22;
     color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+    background-color: #95cd63;
+}
+
+/* Show the navigation on larger screens */
+@media (min-width: 768px) {
+    .main-nav {
+        display: block;
+    }
+}
+/* Hero Section */
+.hero-section {
     width: 100%;
+    height: 100vh;
+    background-image: url('/assets/images/maison-riviere.jpg');
+    background-size: cover;
+    background-position: left;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
 }
 
-input[type="submit"]:hover {
-    background-color: #2e7d32; /* Green on hover */
+.hero-content {
+    position: absolute;
+    top: 24%;
 }
 
-/* Contact Info */
-.contact-info {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #4fc3f7; /* Blue for contact info */
+.hero-title {
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.hero-subtitle span {
+    color: #3e5d22;
+    font-weight: 600;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.reserve-btn {
+    background-color: #3e5d22;
+}
+
+.reserve-btn:hover {
+    background-color: #95cd63;
+}
+
+.donate-btn {
+    background-color: #95cd63;
+}
+
+/* Partners Section */
+.partners-section {
+    margin: 2rem 5%;
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.partner-logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 2rem;
+    vertical-align: middle;
 }

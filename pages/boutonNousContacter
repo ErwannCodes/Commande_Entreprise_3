@@ -4,39 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de Contact</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- Lien relatif au CSS -->
 </head>
 <body>
-    <!-- Bouton "Nous contacter" -->
-    <div class="contact-button-container">
-        <a href="#contact-form" class="contact-button">Nous contacter</a>
-    </div>
+
+<!-- Bouton "Nous contacter" -->
+<div class="contact-button-container">
+    <a href="#contact-form" class="contact-button">Nous contacter</a>
+</div>
     
-    <!-- Section Formulaire de contact -->
-    <section id="contact-form" class="contact-form-section">
-        <div class="form-container">
-            <h2>Formulaire de Contact</h2>
+<!-- Section Formulaire de contact -->
+<section id="contact-form" class="contact-form-section">
+    <div class="form-container">
+        <h2>Formulaire de Contact</h2>
 
-            <!-- Affichage de l'adresse et du numéro de téléphone de l'association -->
-            <div class="contact-info">
-                <p><strong>Adresse :</strong> Moulin Vergraon, 29450 Sizun</p>
-                <p><strong>Numéro de l'association :</strong> 02 98 68 86 33</p>
-            </div>
-
-            <!-- Formulaire -->
-            <form action="mailto:contact@association.com" method="post" enctype="text/plain">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" required><br>
-
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required><br>
-
-                <label for="message">Message :</label><br>
-                <textarea id="message" name="message" rows="4" required></textarea><br>
-
-                <input type="submit" value="Envoyer">
-            </form>
+        <!-- Affichage de l'adresse et du numéro de téléphone de l'association -->
+        <div class="contact-info">
+            <p><strong>Adresse :</strong> Moulin Vergraon, 29450 Sizun</p>
+            <p><strong>Numéro de l'association :</strong> 02 98 68 86 33</p>
         </div>
-    </section>
+
+        <!-- Formulaire -->
+        <form action="mailto:contact@association.com" method="post" enctype="text/plain">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="message">Message :</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br>
+
+            <input type="submit" value="Envoyer">
+        </form>
+    </div>
+</section>
 </body>
 </html>
