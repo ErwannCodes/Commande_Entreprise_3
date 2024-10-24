@@ -1,0 +1,71 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa; /* Light blue inspired by the river */
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    color: #2e7d32; /* Dark green inspired by the trees */
+    margin-bottom: 20px;
+}
+
+/* Container for the form */
+.contact-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    background: linear-gradient(to bottom, #81c784, #4fc3f7); /* Gradient inspired by green hills and blue sky */
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+    color: #2e7d32; /* Dark green for labels */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #81c784; /* Light green for input borders */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4fc3f7; /* Blue button inspired by the river */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #2e7d32; /* Green on hover */
+}
+
+/* Contact Info */
+.contact-info {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4fc3f7; /* Blue for contact info */
+}
