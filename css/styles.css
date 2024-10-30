@@ -175,3 +175,37 @@ body {
     margin-right: 2rem;
     vertical-align: middle;
 }
+
+/* Styles des champs de saisie */
+input[type="text"], 
+input[type="email"], 
+textarea {
+    background-color: #d0f0c0; 
+    border: 1px solid #3e5d22; 
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #95cd63; 
+}
+
+/* Style du bouton Envoyer */
+input[type="submit"] {
+    background-color: #d0f0c0; 
+    color: #3e5d22; 
+    padding: 0.5rem 1rem;
+    border: 1px solid #3e5d22; 
+    border-radius: 0.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #95cd63; /* Vert  foncé au survol */
+}
+
