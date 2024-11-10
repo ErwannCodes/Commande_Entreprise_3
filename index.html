@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maison de la Rivière</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
@@ -14,29 +20,45 @@
             <span class="site-title">MaisonSizun.</span>
         </div>
 
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#">À Propos</a></li>
-                <li><a href="#">Évènements</a></li>
-                <li><a href="#">Explorer</a></li>
-                <li><a href="#">Contacter</a></li>
-            </ul>
-        </nav>
-
+        <div class="main-nav">
+                <div class="left-nav">
+                    <ul >
+                        <li><a href="#">Activités & Services</a></li>
+                        <li><a href="#">Scolaire & Périscolaire</a></li>
+                        </ul>
+                </div>
+                <div class="right-nav">
+                    <ul >
+                        <li><a href="#">A propos</a></li>
+                        <li><a href="#">Nous Soutenir</a></li>
+                        <li><a href="#">Contacter</a></li>
+                        </ul>
+                </div>
+        </div>
+        
         <div class="user-section">
-            <a href="" class="join-btn">Adhérer</a>
-            <!-- UserButton can be added here later if needed -->
+            <a href="" class="join-btn">Adhérer
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            
         </div>
     </header>
     <section class="hero-section">
-        <div class="hero-content">
-            <p class="hero-title">Plongez en Sizun,<br> goutte après goutte</p>
-            <p class="hero-subtitle">Venez vivre une expérience <span>unique au cœur de la nature</span></p>
-            <div class="hero-buttons">
-                <a href="#" class="btn reserve-btn">Réserver ma visite</a>
-                <a href="#" class="btn donate-btn">Je fais un don</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-title">Plongez en Sizun,<br> Goutte après Goutte.</p>
+                <p class="hero-subtitle">Venez vivre une expérience <span>unique au cœur de la nature</span></p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn reserve-btn">Réserver ma visite</a>
+                    <a href="#" class="btn donate-btn">Je fais un don</a>
+                </div>
             </div>
+            <div class="badge">
+                <img src="./Images/badge.svg" alt="Badge" class="badge-img">    
+            </div>
+            
         </div>
+        
     </section>
     
     <div class="partners-section">
@@ -57,3 +79,4 @@
     
 </body>
 </html>
+
