@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,27 +9,8 @@
 </head>
 
 <body>
-    <header class="navigation">
-        <div class="logo-section">
-            <img src="assets/images/plura-logo.svg" alt="Plura logo" class="logo">
-            <span class="site-title">MaisonSizun</span>
-        </div>
+    <iframe id="headerIframe" src="/pages/header.html" style="width: 100%; border: none;" onload="ajusterHauteur()"></iframe>
 
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#">Qui sommes-nous ?</a></li>
-                <li><a href="#">Activités et services</a></li>
-                <li><a href="#">Scolaire et périscolaire</a></li>
-                <li><a href="#">Nous soutenir</a></li>
-                <li><a href="pages/boutonNousContacter.html#contact-form">Nous contacter</a></li>
-            </ul>
-        </nav>
-
-        <div class="user-section">
-            <a href="" class="join-btn">Adhérer</a>
-            <!-- UserButton can be added here later if needed -->
-        </div>
-    </header>
     <section class="hero-section">
         <div class="hero-content">
             <p class="hero-title">Plongez en Sizun,<br> goutte après goutte</p>
@@ -39,22 +21,10 @@
             </div>
         </div>
     </section>
+
+    <iframe id="headerIframe" src="/pages/footer.html" style="width: 100%; border: none;" onload="ajusterHauteur()"></iframe>
     
-    <div class="partners-section">
-        <div class="marquee">
-            <div class="marquee-content">
-                <!-- Partner logos will scroll here -->
-                <img src="assets/images/landivisiau.svg" alt="Pays de Landivisiau" class="partner-logo">
-                <img src="assets/images/KmYqX8CAkjNlVNQ.png" alt="Mairie de Sizun" class="partner-logo">
-                <img src="assets/images/logo-aappam-elorn-encart.png" alt="Syndicat de Bassin de l'Elorn" class="partner-logo">
-                <img src="assets/images/abpm.png" alt="Association pour la pêche à la Mouche" class="partner-logo">
-                <img src="assets/images/mammologie.png" alt="Groupe Mammalogique Breton" class="partner-logo">
-                <img src="assets/images/bretagne_tourisme.png" alt="Tourisme en Bretagne" class="partner-logo">
-                <img src="assets/images/finistere.png" alt="Tout commence en Finistère" class="partner-logo">
-                <img src="assets/images/roscoff.png" alt="Roscoff-Tourisme" class="partner-logo">
-            </div>
-        </div>
-    </div>
+    <script src="fonctions.js"></script>
+
 </body>
 </html>
-
