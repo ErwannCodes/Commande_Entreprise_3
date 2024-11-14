@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    <iframe id="headerIframe" src="/pages/header.html" style="width: 100%; border: none;" onload="ajusterHauteur()"></iframe>
 
+    <?php include 'pages/header.php'; ?>
+    
     <section class="hero-section">
         <div class="hero-content">
             <p class="hero-title">Plongez en Sizun,<br> goutte après goutte</p>
@@ -22,9 +23,7 @@
         </div>
     </section>
 
-    <iframe id="headerIframe" src="/pages/footer.html" style="width: 100%; border: none;" onload="ajusterHauteur()"></iframe>
-    
     <script src="fonctions.js"></script>
-
+    
 </body>
 </html>

@@ -10,6 +10,9 @@
 </head>
 
 <body>
+
+    <?php require_once(__DIR__.'/header.php'); ?>
+
     <section class="hero-section">
         <div class="hero-content">
             <div class="form-container">
@@ -40,6 +43,9 @@
             </div>
         </div>
     </section>
+
+    <?php require_once(__DIR__.'/footer.php'); ?>
+
 </body>
 
 </html>
