@@ -15,10 +15,10 @@
 
     <div class="main-nav">
         <ul>
-            <li><a href="#">Qui sommes-nous ?</a></li>
-            <li><a href="#">Activités et services</a></li>
-            <li><a href="">Scolaire et périscolaire</a></li>
-            <li><a href="nous-soutenir.html">Nous soutenir</a></li>
+            <li><a href="presentation.php">Qui sommes-nous ?</a></li>
+            <li><a href="activities.php">Activités et services</a></li>
+            <li><a href="school.php">Scolaire et périscolaire</a></li>
+            <li><a href="support.php">Nous soutenir</a></li>
             <li><a href="contact.php">Nous contacter</a></li>
         </ul>
     </div>
