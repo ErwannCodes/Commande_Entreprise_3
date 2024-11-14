@@ -209,3 +209,12 @@ input[type="submit"]:hover {
     background-color: #95cd63; /* Vert  foncé au survol */
 }
 
+h2,p {
+    margin: 1em auto;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin: 0.5rem ;
+}
