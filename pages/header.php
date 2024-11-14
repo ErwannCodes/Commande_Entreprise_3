@@ -15,11 +15,11 @@
 
     <div class="main-nav">
         <ul>
-            <li><a href="presentation.php">Qui sommes-nous ?</a></li>
-            <li><a href="activities.php">Activités et services</a></li>
-            <li><a href="school.php">Scolaire et périscolaire</a></li>
-            <li><a href="support.php">Nous soutenir</a></li>
-            <li><a href="contact.php">Nous contacter</a></li>
+            <li><a href="/pages/presentation.php">Qui sommes-nous ?</a></li>
+            <li><a href="/pages/activities.php">Activités et services</a></li>
+            <li><a href="/pages/school.php">Scolaire et périscolaire</a></li>
+            <li><a href="/pages/support.php">Nous soutenir</a></li>
+            <li><a href="/pages/contact.php">Nous contacter</a></li>
         </ul>
     </div>
 
