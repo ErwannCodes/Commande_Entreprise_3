@@ -10,7 +10,6 @@
 <div class="partners-section">
     <div class="marquee">
         <div class="marquee-content">
-            <!-- Partner logos will scroll here -->
             <img src="../assets/images/landivisiau.svg" alt="Pays de Landivisiau" class="partner-logo">
             <img src="../assets/images/KmYqX8CAkjNlVNQ.png" alt="Mairie de Sizun" class="partner-logo">
             <img src="../assets/images/logo-aappam-elorn-encart.png" alt="Syndicat de Bassin de l'Elorn" class="partner-logo">

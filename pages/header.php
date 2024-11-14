@@ -19,13 +19,12 @@
             <li><a href="#">Activités et services</a></li>
             <li><a href="">Scolaire et périscolaire</a></li>
             <li><a href="nous-soutenir.html">Nous soutenir</a></li>
-            <li><a href="nous-contacter.php">Nous contacter</a></li>
+            <li><a href="contact.php">Nous contacter</a></li>
         </ul>
     </div>
 
     <div class="user-section">
         <a href="" class="join-btn">Adhérer</a>
-        <!-- UserButton can be added here later if needed -->
     </div>
 
 </nav>
