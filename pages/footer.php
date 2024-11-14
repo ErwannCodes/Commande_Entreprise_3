@@ -18,6 +18,8 @@
             <img src="../assets/images/bretagne_tourisme.png" alt="Tourisme en Bretagne" class="partner-logo">
             <img src="../assets/images/finistere.png" alt="Tout commence en Finistère" class="partner-logo">
             <img src="../assets/images/roscoff.png" alt="Roscoff-Tourisme" class="partner-logo">
+            <img src="../assets/images/logoPRE4.jpg" alt="Pêche Rivière Environnement" class="partner-logo">
+            <img src="../assets/images/Logo_MRB.jpg" alt="Maison de la Rivière et de la Biodiversité" class="partner-logo">
         </div>
     </div>
 </div>

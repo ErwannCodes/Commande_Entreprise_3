@@ -23,6 +23,7 @@
         </div>
     </section>
 
+    <?php include 'pages/footer.php'; ?>
     <script src="fonctions.js"></script>
     
 </body>

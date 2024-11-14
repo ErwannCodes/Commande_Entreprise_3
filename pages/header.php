@@ -9,7 +9,7 @@
 
 <nav class="navigation">
     <div class="logo-section">
-        <img src="../assets/images/plura-logo.svg" alt="Plura logo" class="logo">
+        <img src="../assets/images/plura-logo.svg" alt="Plura_logo" class="logo">
         <span class="site-title">MaisonSizun</span>
     </div>
 

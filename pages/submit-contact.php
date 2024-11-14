@@ -43,16 +43,15 @@ $currentDateTime = date('Y-m-d H:i:s');
 
 <body>
     <main>
-
-        <h1> Message bien reçu ! </h1>
-        <h2> Nous vous faisons un retour dès que possible !</h2>
-
-        <div class="containeur">
-            <a class="a" href="../index.php"> Retour à l'accueil</a>
-        </div>
-
+        <section class="hero-section">
+            <div class="hero-content">
+                <p class="hero-title">Message bien reçu !</p>
+                <p class="hero-subtitle">Nous vous ferons un retour dès que possible !</span></p>
+            </div>
+        </section>
     </main>
 </body>
+
 
 <footer>
     <?php require_once(__DIR__.'/footer.php'); ?>    <!-- PAS SECURISE, A MODIFIER -->
