@@ -5,7 +5,7 @@
 <?php
 
 require_once(__DIR__."/header.php");
-//require_once(__DIR__."/databaseconnect.php");
+require_once(__DIR__."/../config/databaseconnect.php");
 
 $postData = array_map('htmlspecialchars', $_POST);  // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
 
@@ -20,15 +20,15 @@ if (   trim($postData['prenom']) === ''
 $currentDateTime = date('Y-m-d H:i:s');
 
 // On ajoute les infos dans la base de données
-// $sqlQuery = 'INSERT INTO message(prenom,nom,email,message,date) VALUES (:prenom, :nom, :email, :message, :date)';
-// $insertContact = $mysqlClient->prepare($sqlQuery);
-// $insertContact->execute([
-//     'prenom' => $postData["prenom"],
-//     'nom' => $postData["nom"],
-//     'email' => $postData["email"],
-//     'message' => $postData["message"],
-//     'date' => $currentDateTime,
-//     ]);
+$sqlQuery = 'INSERT INTO contact(prenom,nom,email,message,date) VALUES (:prenom, :nom, :email, :message, :date)';
+$insertContact = $mysqlClient->prepare($sqlQuery);
+$insertContact->execute([
+    'prenom' => $postData["prenom"],
+    'nom' => $postData["nom"],
+    'email' => $postData["email"],
+    'message' => $postData["message"],
+    'date' => $currentDateTime,
+    ]);
 
 ?>
 
