@@ -16,7 +16,7 @@
 <body>
     <header class="navigation">
         <div class="logo-section">
-            <img src="./Images/plura-logo.svg" alt="Plura logo" class="logo">
+            <!-- <img src="./Images/plura-logo.svg" alt="Plura logo" class="logo"> -->
             <span class="site-title">MaisonSizun.</span>
         </div>
 
@@ -50,17 +50,16 @@
                 <p class="hero-subtitle">Venez vivre une expérience <span>unique au cœur de la nature</span></p>
                 <div class="hero-buttons">
                     <a href="#" class="btn reserve-btn">Réserver ma visite</a>
-                    <a href="#" class="btn donate-btn">Je fais un don</a>
+                    <a href="#" class="btn donate-btn">Explorer les activités</a>
                 </div>
             </div>
-            <div class="badge">
+            <!-- <div class="badge">
                 <img src="./Images/badge.svg" alt="Badge" class="badge-img">    
-            </div>
+            </div> -->
             
         </div>
         
     </section>
-    
     <div class="partners-section">
         <div class="marquee">
             <div class="marquee-content">
@@ -76,6 +75,89 @@
             </div>
         </div>
     </div>
+    <section class="about-section">
+        <div class="about-section-container">
+            <div class="about-section-content">
+                <h2 class="about-headline">Quand Biodiversité Rime <br> Avec Fun:
+                <span class="fluo">La Maison de la Rivière</span><br> vous ouvre ses portes
+                </h2>
+                <p>Située à Sizun, c'est un lieu dédié à la découverte <br>de la nature et des écosystèmes aquatiques. <br>En bordure de l'Élorn, elle offre expositions, <br> animations et sentiers pour explorer <br>la biodiversité locale et comprendre <br>les enjeux environnementaux de la région.</p>
+                <a href="#" class="alternate-btn">En Savoir Plus</a>
+            </div>
+        </div>
+    </section>
+    <section class="top-activities-section">
+        <h2 class="about-headline2">Le top des <span style="padding: .3rem 1rem .3rem;   
+            border-radius: 20px;
+            background-color: #036905;
+            color: #DDFF95;">activités</span> <br>à faire sur place :</h2>
+        <div class="flex-container">
+            <div class="left-column">
+                <div class="activity-card" onclick="displayImage('./Images/aquarium.jpg', this)">
+                    <div class="icon-circle" style="background-color: #3E5D22;">
+                        <i class="fa-solid fa-person-hiking"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Visite du Musée</h3>
+                        <p>Explorez le musée de la Maison de la Rivière et découvrez l’histoire fascinante de la rivière et de ses écosystèmes. De la biodiversité à l’évolution de notre environnement, plongez dans un univers interactif qui vous connecte à la nature.</p>
+                    </div>
+                </div>
+                <div class="activity-card" onclick="displayImage('./Images/classeverte.jpg', this)">
+                    <div class="icon-circle" style="background-color: #3E5D22;">
+                        <i class="fa-solid fa-fish"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Classes Scolaires et Classes Vertes</h3>
+                        <p>Confiez-nous vos classes pour une expérience éducative inoubliable en pleine nature. Nos classes vertes sont conçues pour éveiller la curiosité des élèves et les sensibiliser à la biodiversité et à la protection de l’environnement. Une façon unique d’apprendre tout en explorant !</p>
+                    </div>
+                </div>
+                <div class="activity-card" onclick="displayImage('./Images/reunion.jpg', this)">
+                    <div class="icon-circle" style="background-color: #E9F2F3; color: rgb(112, 112, 124);">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>Réunions et Conférences au Tiers Lieu</h3>
+                        <p>Profitez de notre tiers lieu pour organiser vos réunions, séminaires ou conférences. Offrez à vos participants un cadre inspirant, entre nature et modernité, pour des échanges fructueux et un ressourcement au vert.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="right-column">
+                <img id="activity-image" src="Images/aquarium.jpg" alt="Activity Image">
+            </div>
+        </div>
+    </section>
+    
+      
+      
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <script>
+        function displayImage(imageSrc, element) {
+          document.getElementById("activity-image").src = imageSrc;
+          document.querySelectorAll('.activity-card').forEach(card => {
+            card.classList.remove('active');
+          });
+          element.classList.add('active');
+        }
+      </script>
+      
+      
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <script>
+  function displayImage(imageSrc, element) {
+    // Change the src attribute of the image
+    document.getElementById("activity-image").src = imageSrc;
+    
+    // Remove "active" class from all activity cards
+    document.querySelectorAll('.activity-card').forEach(card => {
+      card.classList.remove('active');
+    });
+
+    // Add "active" class to the clicked card
+    element.classList.add('active');
+  }
+      </script>
+      
     
 </body>
 </html>
