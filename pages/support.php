@@ -1,5 +1,11 @@
 <?php require_once(__DIR__."/header.php"); ?>
 
+<style>
+    #form1, #form2 {
+        display: none;
+    }
+</style>
+
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -32,58 +38,62 @@
         <label for="option2">Adhésion association de soutien</label> 
 
         <input type="radio" id="option3" name="formOption" value="form2"> 
-        <label for="option2">Adhésion association de partenariat</label> 
+        <label for="option1">Adhésion association de partenariat</label> 
         
         <input type="radio" id="option4" name="formOption" value="form2"> 
-        <label for="option2">Adhésion entreprise</label> 
+        <label for="option2">Adhésion entreprise </label>
+
     </div>
 
 
     <!-- Formulaire pour les personnes morales -->
 
     <form id="form1" action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
-        
-        <div class="prenomdiv">           <!-- Prénom -->
-            <label for="prenom" class="form-label">Prénom :</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" required> 
+        <input type="hidden" name="type" value="Adhésion simple personne morale">
+
+        <input id="structure_name" type="hidden" name="structure_name" value="null">
+
+        <div class="first_namediv">                 <!-- Prénom -->
+            <label for="first_name" class="form-label">Prénom :</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" required> 
         </div> 
         
-        <div class="nomdiv">           <!-- Nom -->
-            <label for="nom" class="form-label">Nom :</label> 
-            <input type="text" class="form-control" id="nom" name="nom" required> 
+        <div class="last_namediv">                  <!-- Nom -->
+            <label for="last_name" class="form-label">Nom de famille :</label> 
+            <input type="text" class="form-control" id="last_name" name="last_name" required> 
         </div>
 
-        <div class="adress">              <!-- l'adresse -->
-            <label for="adress" class="form-label">Adresse postale</label>
+        <div class="adressdiv">                     <!-- L'adresse -->
+            <label for="adress" class="form-label">Adresse postale :</label>
             <input type="text" class="form-control" id="adress" name="adress" required>
         </div>
 
-        <div class="codepostal">              <!-- code postal -->
-            <label for="code" class="form-label">Adresse postale</label>
-            <input type="text" class="form-control" id="adress" name="adress" required>
+        <div class="postal_codediv">                <!-- Code postal -->
+            <label for="postal_code" class="form-label">Code postal :</label>
+            <input type="text" class="form-control" id="postal_code" name="postal_code" required>
         </div>
 
-        <div class="commune">              <!-- Commune -->
-            <label for="commune" class="form-label">Commune :</label>
-            <input type="text" class="form-control" id="commune" name="commune" required>
+        <div class="citydiv">                       <!-- Commune -->
+            <label for="city" class="form-label">Commune :</label>
+            <input type="text" class="form-control" id="city" name="city" required>
         </div>
 
-        <div class="telephone">              <!-- Téléphone -->
-            <label for="telephone" class="form-label">Téléphone :</label>
-            <input type="tel" class="form-control" id="telephone" name="telephone" required>
+        <div class="phonediv">                      <!-- Téléphone -->
+            <label for="phone" class="form-label">Téléphone :</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required>
         </div>
 
-        <div class="emaildiv">              <!-- l'email -->
-            <label for="email" class="form-label">Email</label>
+        <div class="emaildiv">                      <!-- L'email -->
+            <label for="email" class="form-label">Email :</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" required>
         </div>
 
-        <div class="profession">              <!-- Profession, compétence -->
-            <label for="profession" class="form-label">Profession, compétence :</label>
-            <input type="text" class="form-control" id="profession" name="profession" required>
+        <div class="occupationdiv">                 <!-- Profession / Compétences -->
+            <label for="occupation" class="form-label">Profession / Compétences :</label>
+            <input type="text" class="form-control" id="occupation" name="occupation" required>
         </div>
 
-        <div class="buttondiv">  
+        <div class="buttondiv">                     <!-- Bouton d'envoi -->
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
 
@@ -92,54 +102,57 @@
     <!-- Formulaire pour les associations / entreprises -->
 
     <form id="form2" action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
-        
-        <div class="nomstructure">        <!-- Nom de la structure -->
-            <label for="nomstructure" class="form-label">Nom de la structure :</label>
-            <input type="text" class="form-control" id="nomstructure" name="nomstructure" required>
+        <input id="type" type="hidden" name="type" value="">
+
+        <input id="occupation" type="hidden" name="occupation" value="null">
+
+        <div class="structure_namediv">                  <!-- Nom de la structure -->
+            <label for="structure_name" class="form-label">Nom de la structure :</label>
+            <input type="text" class="form-control" id="structure_name" name="structure_name" required>
         </div>
 
-        <div class="prenomdiv">           <!-- Prénom du président(e)-->
-            <label for="prenom" class="form-label">Prénom du président(e):</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" required> 
+        <div class="first_namediv">                     <!-- Prénom du président(e)-->
+            <label for="first_name" class="form-label">Prénom du président(e):</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" required> 
         </div>
         
-        <div class="nomdiv">             <!-- Nom du president(e)-->
-            <label for="nom" class="form-label">Nom du président(e) :</label> 
-            <input type="text" class="form-control" id="nom" name="nom" required> 
+        <div class="last_namediv">                      <!-- Nom du president(e)-->
+            <label for="last_name" class="form-label">Nom du président(e) :</label> 
+            <input type="text" class="form-control" id="last_name" name="last_name" required> 
         </div>
 
-        <div class="adress">              <!-- L'adresse -->
-            <label for="adress" class="form-label">Adresse postale</label>
+        <div class="adressdiv">                         <!-- L'adresse de la structure -->
+            <label for="adress" class="form-label">Adresse postale de la structure :</label>
             <input type="text" class="form-control" id="adress" name="adress" required>
         </div>
 
-        <div class="codepostal">              <!-- Code postal -->
-            <label for="code" class="form-label">Adresse postale</label>
-            <input type="text" class="form-control" id="adress" name="adress" required>
+        <div class="postal_codediv">                    <!-- Code postal -->
+            <label for="postal_code" class="form-label">Code postal :</label>
+            <input type="text" class="form-control" id="postal_code" name="postal_code" required>
         </div>
 
-        <div class="commune">              <!-- Commune -->
-            <label for="commune" class="form-label">Commune :</label>
-            <input type="text" class="form-control" id="commune" name="commune" required>
+        <div class="citydiv">                           <!-- Commune  -->
+            <label for="city" class="form-label">Commune :</label>
+            <input type="text" class="form-control" id="city" name="city" required>
         </div>
 
-        <div class="telephone">              <!-- Téléphone -->
-            <label for="telephone" class="form-label">Téléphone :</label>
-            <input type="tel" class="form-control" id="telephone" name="telephone" required>
+        <div class="phonediv">                          <!-- Téléphone -->
+            <label for="phone" class="form-label">Téléphone :</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required>
         </div>
 
-        <div class="emaildiv">           <!-- l'email -->
-            <label for="email" class="form-label">Email</label>
+        <div class="emaildiv">                         <!-- L'email -->
+            <label for="email" class="form-label">Email :</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" required>
         </div>
 
-        <div class="buttondiv">  
+        <div class="buttondiv">                        <!-- Bouton d'envoi -->
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
 
     </form>
 
-    <script src="/js/functions.js"></script>
+    <script src="js/functions.js"></script>
 
 </body>
 
