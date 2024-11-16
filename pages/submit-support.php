@@ -143,43 +143,24 @@ if(!empty($errors)){
 
 $currentDateTime = date('Y-m-d H:i:s');
 
-if ($postData["type"]==="Adhésion simple personne morale"){         // S'il s'agit d'une inscription en tant que "simple personne morale"
-    $sqlQuery = 'INSERT INTO membership(type, first_name, last_name, adress, postal_code, city, phone, email, occupation, date) VALUES (:type, :first_name, :last_name, :adress, :postal_code, :city, :phone, :email, :occupation, :date)';
-    $insertMembership = $mysqlClient->prepare($sqlQuery);
-    $insertMembership->execute([
-        'type' => $postData['type'],
-        'first_name' => $postData["first_name"],
-        'last_name' => $postData["last_name"],
-        'adress' => $postData["adress"],
-        'postal_code' => $postData["postal_code"],
-        'city' => $postData["city"],
-        'phone' => $postData["phone"],
-        'email' => $postData["email"],
-        'occupation' => $postData["occupation"],
-        'date' => $currentDateTime,
-        ]);
+$valueStructure = $postData['structure_name'] ?? null;
+$valueOccupation = $postData['occupation'] ?? null;
 
-        // Coder un envoie de mail vers la boite du salarié de la maison de la rivière
-
-} else {                      // Sinon on rjaoute le champ "structure_name" et on enlève "occupation"
-    $sqlQuery = 'INSERT INTO membership(type, structure_name, first_name, last_name, adress, postal_code, city, phone, email, date) VALUES (:type, :structure_name, :first_name, :last_name, :adress, :postal_code, :city, :phone, :email, :date)';
-    $insertMembership = $mysqlClient->prepare($sqlQuery);
-    $insertMembership->execute([
-        'type' => $postData['type'],
-        'structure_name' => $postData["structure_name"],
-        'first_name' => $postData["first_name"],
-        'last_name' => $postData["last_name"],
-        'adress' => $postData["adress"],
-        'postal_code' => $postData["postal_code"],
-        'city' => $postData["city"],
-        'phone' => $postData["phone"],
-        'email' => $postData["email"],
-        'date' => $currentDateTime,
-        ]);
-
-        // Coder un envoie de mail vers la boite du salarié de la maison de la rivière
-
-}
+$sqlQuery = 'INSERT INTO membership(type, structure_name, first_name, last_name, adress, postal_code, city, phone, email, occupation, date) VALUES (:type, :structure_name, :first_name, :last_name, :adress, :postal_code, :city, :phone, :email, :occupation, :date)';
+$insertMembership = $mysqlClient->prepare($sqlQuery);
+$insertMembership->execute([
+    'type' => $postData['type'],
+    'structure_name' => $valueStructure,
+    'first_name' => $postData["first_name"],
+    'last_name' => $postData["last_name"],
+    'adress' => $postData["adress"],
+    'postal_code' => $postData["postal_code"],
+    'city' => $postData["city"],
+    'phone' => $postData["phone"],
+    'email' => $postData["email"],
+    'occupation' => $valueOccupation,
+    'date' => $currentDateTime,
+    ]);
 
 ?>
 
