@@ -1,6 +1,4 @@
-<!--  
-    Ce script a pour but de vérifier les informations renseignées par l'utilisateur dans la page "support.php".
--->
+<!--  Ce script a pour but de vérifier les informations renseignées par l'utilisateur dans la page "support.php". -->
 
 <?php
 session_start();
