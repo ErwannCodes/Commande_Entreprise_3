@@ -30,6 +30,8 @@ $insertContact->execute([
     'date' => $currentDateTime,
     ]);
 
+    // Coder un envoi de mail vers la boite du salarié de la mdr
+
 ?>
 
 <!DOCTYPE html>

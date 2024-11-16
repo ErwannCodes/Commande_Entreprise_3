@@ -8,6 +8,7 @@ require_once(__DIR__."/header.php");
 require_once(__DIR__."/../config/databaseconnect.php");
 
 $postData = array_map('htmlspecialchars', $_POST);  // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
+$erros = [];                                        // Tableau qui va contenir les erreurs potentielles lors de la vérification des données 
 var_dump($postData);
 
 foreach($postData as $key => $value){              // Permet de s'assurer que les informations entrées pas l'utilisateur sont exploitables.
@@ -17,44 +18,47 @@ foreach($postData as $key => $value){              // Permet de s'assurer que le
     }
 }
 
-
 if ($postData['structure_name'] != null && !preg_match("/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/", $postData['structure_name'])) {
-    echo "Le nom de la structure n'est pas valide. Il doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.";
-    exit;
+    $errors["structure_name"] = "Le nom de la structure n'est pas valide. Il doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.";
 }
 
-if (!preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-']+$/", $postData['first_name']) || !preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-' ]+$/", $postData['last_name'])) {
-    echo "Le prénom et le nom de famille ne doivent contenir que des lettres.";
-    exit;
+if (!preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-']+$/", $postData['first_name'])) {
+    $errors["first_name"] = "Le prénom ne doit contenir que des lettres.";
+}
+
+if (!preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-' ]+$/", $postData['last_name'])) {
+    $errors["last_name"] = "Le nom de famille ne doit contenir que des lettres.";
 }
 
 if (!preg_match("/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'\.]+$/", $postData['adress'])) {
-    echo "L'adresse n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des points.";
-    exit;
+    $errors["adress"] = "L'adresse n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des points.";
 }
 
 if (!preg_match("/^[0-9]{5}$/", $postData['postal_code'])) {
-    echo "Le code postal n'est pas valide. Il doit comporter 5 chiffres.";
-    exit;
+    $errors["adress"] = "Le code postal n'est pas valide. Il doit comporter 5 chiffres.";
 }
 
 if (!preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s-]+$/", $postData['city'])) {
-    echo "Le nom de la ville n'est pas valide. Il doit contenir uniquement des lettres, des espaces et des tirets.";
-    exit;
+    $errors["city"] = "Le nom de la ville n'est pas valide. Il doit contenir uniquement des lettres, des espaces et des tirets.";
 }
 
 if (!preg_match("/^[0-9]{10}$/", $postData['phone'])) {
-    echo "Le numéro de téléphone n'est pas valide. Il doit comporter 10 chiffres.";
-    exit;
+    $errors["phone"] = "Le numéro de téléphone n'est pas valide. Il doit comporter 10 chiffres.";
 }
 
 if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
-    echo "L'adresse e-mail est invalide.";
-    exit;
+    $errors["email"] = "L'adresse e-mail est invalide.";
 }
 
 if ($postData['occupation'] != null && !preg_match("/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/", $postData['occupation'])) {
-    echo "La profession n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.";
+    $errors["occupation"] = "La profession n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.";
+}
+
+if(!empty($errors)){
+    session_start();
+    $_SESSION['errors'] = $errors;          // Permet de passer les erreurs au formulaire
+    $_SESSION['postData'] = $postData;     // Stocker les données du formulaire pour les reremplir après
+    header("Location: support.php");   // Recharge la même page
     exit;
 }
 
@@ -75,6 +79,9 @@ if ($postData["type"]==="Adhésion simple personne morale"){         // S'il s'a
         'occupation' => $postData["occupation"],
         'date' => $currentDateTime,
         ]);
+
+        // Coder un envoie de mail vers la boite du salarié de la maison de la rivière
+
 } else {                      // Sinon on rjaoute le champ "structure_name" et on enlève "occupation"
     $sqlQuery = 'INSERT INTO membership(type, structure_name, first_name, last_name, adress, postal_code, city, phone, email, date) VALUES (:type, :structure_name, :first_name, :last_name, :adress, :postal_code, :city, :phone, :email, :date)';
     $insertMembership = $mysqlClient->prepare($sqlQuery);
@@ -90,6 +97,8 @@ if ($postData["type"]==="Adhésion simple personne morale"){         // S'il s'a
         'email' => $postData["email"],
         'date' => $currentDateTime,
         ]);
+
+        // Coder un envoie de mail vers la boite du salarié de la maison de la rivière
 
 }
 
