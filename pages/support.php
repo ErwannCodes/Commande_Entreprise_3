@@ -1,10 +1,17 @@
 <?php 
 
-require_once(__DIR__."/header.php"); 
+require_once(__DIR__."/header.php");
+
 session_start();
+
 $errors = $_SESSION["errors"] ?? [];
 $postData = $_SESSION['postData'] ?? [];
 unset($_SESSION['errors'], $_SESSION['postData']); // Permet de supprimer les données dans ces champs une fois qu'elles
+
+if(empty($_SESSION["csrf_token"])){
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 
 ?>
 
@@ -53,6 +60,8 @@ unset($_SESSION['errors'], $_SESSION['postData']); // Permet de supprimer les do
 
     <form id="form1" action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
         <input type="hidden" name="type" value="Adhésion simple personne morale">
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+
 
         <input id="structure_name" type="hidden" name="structure_name" value="null">
 
@@ -132,12 +141,14 @@ unset($_SESSION['errors'], $_SESSION['postData']); // Permet de supprimer les do
 
     <form id="form2" action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
         <input id="type" type="hidden" name="type" value="">
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+
 
         <input id="occupation" type="hidden" name="occupation" value="null">
 
         <div class="structure_namediv">                  <!-- Nom de la structure -->
             <label for="structure_name" class="form-label">Nom de la structure :</label>
-            <input type="text" class="form-control" id="structure_name" name="structure_name" value="<?= htmlspecialchars($postData['structure_name'] ?? '') ?>" required>
+            <input type="text" class="form-control" id="structure_name" name="structure_name" value="<?php echo isset($postData['structure_name']) ? htmlspecialchars($postData['structure_name']) : ''; ?>" required>
             <?php if (isset($errors['structure_name'])): ?>
                 <p class="error-message"><?= htmlspecialchars($errors['structure_name']) ?></p>
             <?php endif; ?>        

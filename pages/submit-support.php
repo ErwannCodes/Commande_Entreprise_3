@@ -3,62 +3,143 @@
 -->
 
 <?php
+session_start();
 
 require_once(__DIR__."/header.php");
 require_once(__DIR__."/../config/databaseconnect.php");
 
-$postData = array_map('htmlspecialchars', $_POST);  // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
-$erros = [];                                        // Tableau qui va contenir les erreurs potentielles lors de la vérification des données 
-var_dump($postData);
+if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {      // Vérification csrf
+    die("Invalid CSRF token.");
+}
 
-foreach($postData as $key => $value){              // Permet de s'assurer que les informations entrées pas l'utilisateur sont exploitables.
-    if (trim($value)===""){
-        echo("Veuillez remplir chaque case.");
-        exit;
+$postData = array_map('htmlspecialchars', $_POST);                              // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
+
+if(isset($postData["type"]) && $postData["type"]==="Adhésion simple personne morale"){
+    $required = true;
+}
+
+$validationRules = [
+    'first_name' => [
+        'required' => true,
+        'regex' => "/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-']+$/",
+        'max_length' => 50,
+        'error_messages' => [
+            'required' => "Le prénom est requis.",
+            'regex' => "Le prénom ne doit contenir que des lettres.",
+            'max_length' => "Le prénom ne doit pas dépasser 50 caractères."
+        ],
+    ],
+    'last_name' => [
+        'required' => true,
+        'regex' => "/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-']+$/",
+        'max_length' => 50,
+        'error_messages' => [
+            'required' => "Le nom est requis.",
+            'regex' => "Le nom ne doit contenir que des lettres.",
+            'max_length' => "Le nom ne doit pas dépasser 50 caractères."
+        ],
+    ],
+    'email' => [
+        'required' => true,
+        'filter' => FILTER_VALIDATE_EMAIL,
+        'max_length' => 100,
+        'error_messages' => [
+            'required' => "L'email est requis.",
+            'filter' => "L'adresse email est invalide.",
+            'max_length' => "L'email ne doit pas dépasser 100 caractères."
+        ],
+    ],
+    'structure_name' => [
+        'required' => !$required,                                    // N'est requis que pour le cas d'un formulaire d'association ou d'entreprise 
+        'regex' => "/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/",
+        'max_length' => 100,
+        'error_messages' => [
+            'required' => "Veuillez remplir ce champ.",
+            'regex' => "Le nom de la structure n'est pas valide. Il doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.",
+            'max_length' => "Le nom de la structure ne doit pas dépasser 100 caractères."
+        ],
+    ],
+    'adress' => [
+        'required' => true,
+        'regex' => "/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'\.]+$/",
+        'max_length' => 100,
+        'error_messages' => [
+            'required' => "Veuillez remplir ce champ.",
+            'regex' => "L'adresse n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des points.",
+            'max_length' => "L'adresse ne doit pas dépasser 100 caractères."
+        ],
+    ],
+    'postal_code' => [
+        'required' => true,
+        'regex' => "/^[0-9]{5}$/",
+        'error_messages' => [
+            'required' => "Veuillez remplir ce champ.",
+            'regex' => "Le code postal n'est pas valide. Il doit comporter 5 chiffres."
+        ],
+    ],
+    'city' => [
+        'required' => true,
+        'regex' => "/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-]+$/",
+        'max_length' => 64,
+        'error_messages' => [
+            'required' => "Veuillez remplir ce champ.",
+            'regex' => "Le nom de la ville n'est pas valide. Il doit contenir uniquement des lettres, des espaces et des tirets.",
+            'max_length' => "Le nom de la ville ne doit pas dépasser 64 caractères."
+        ],
+    ],
+    'phone' => [
+        'required' => true,
+        'regex' => "/^[0-9]{10}$/",
+        'error_messages' => [
+            'required' => "Veuillez remplir ce champ.",
+            'regex' => "Le numéro de téléphone n'est pas valide. Il doit comporter 10 chiffres."
+        ],
+    ],
+    'occupation' => [
+        'required' => $required,                             // N'est requis que pour un formulaire de personne morale
+        'regex' => "/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/",
+        'max_length' => 50,
+        'error_messages' => [
+            'required' => "Veuillez remplir ce champ.",
+            'regex' => "La profession n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.",
+            'max_length' => "La profession ne doit pas dépasser 50 caractères."
+        ],
+    ],
+];
+
+function validateInput(&$data, $rules) {   // Fonction générique qui va vérifier toutes les données entrées par l'utilisateur
+    $errors = [];
+    $data = array_map('trim', $data);
+
+    foreach ($rules as $field => $ruleSet) {
+        
+        if (isset($ruleSet['required']) && $ruleSet['required'] && empty($data[$field])) { // Si le champ est requis et qu'il n'est pas renseigné :
+            $errors[$field] = $ruleSet['error_messages']['required'];
+            continue;
+        }
+
+        if (!empty($data[$field])) {
+            if (isset($ruleSet['regex']) && !preg_match($ruleSet['regex'], $data[$field])) {  // Vérification de la regex
+                $errors[$field] = $ruleSet['error_messages']['regex'];
+            }
+            if (isset($ruleSet['filter']) && !filter_var($data[$field], $ruleSet['filter'])) {  // Vérification du filtre ( pour le mail notament )
+                $errors[$field] = $ruleSet['error_messages']['filter'];
+            }
+            if (isset($ruleSet['max_length']) && strlen($data[$field]) > $ruleSet['max_length']) {  // Vérification de la longueur maximale
+                $errors[$field] = $ruleSet['error_messages']['max_length'];
+            }
+        }
     }
+
+    return $errors;
 }
 
-if ($postData['structure_name'] != null && !preg_match("/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/", $postData['structure_name'])) {
-    $errors["structure_name"] = "Le nom de la structure n'est pas valide. Il doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.";
-}
-
-if (!preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-']+$/", $postData['first_name'])) {
-    $errors["first_name"] = "Le prénom ne doit contenir que des lettres.";
-}
-
-if (!preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s\-' ]+$/", $postData['last_name'])) {
-    $errors["last_name"] = "Le nom de famille ne doit contenir que des lettres.";
-}
-
-if (!preg_match("/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'\.]+$/", $postData['adress'])) {
-    $errors["adress"] = "L'adresse n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des points.";
-}
-
-if (!preg_match("/^[0-9]{5}$/", $postData['postal_code'])) {
-    $errors["adress"] = "Le code postal n'est pas valide. Il doit comporter 5 chiffres.";
-}
-
-if (!preg_match("/^[a-zA-ZéèàùâêîôûäëïöüÀ-ÿ\s-]+$/", $postData['city'])) {
-    $errors["city"] = "Le nom de la ville n'est pas valide. Il doit contenir uniquement des lettres, des espaces et des tirets.";
-}
-
-if (!preg_match("/^[0-9]{10}$/", $postData['phone'])) {
-    $errors["phone"] = "Le numéro de téléphone n'est pas valide. Il doit comporter 10 chiffres.";
-}
-
-if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
-    $errors["email"] = "L'adresse e-mail est invalide.";
-}
-
-if ($postData['occupation'] != null && !preg_match("/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/", $postData['occupation'])) {
-    $errors["occupation"] = "La profession n'est pas valide. Elle doit contenir uniquement des lettres, des chiffres, des espaces, des tirets, des apostrophes et des caractères comme '&'.";
-}
+$errors = validateInput($postData, $validationRules);
 
 if(!empty($errors)){
-    session_start();
-    $_SESSION['errors'] = $errors;          // Permet de passer les erreurs au formulaire
+    $_SESSION['errors'] = $errors;          // Permet de passer les erreurs à la page "support.php"
     $_SESSION['postData'] = $postData;     // Stocker les données du formulaire pour les reremplir après
-    header("Location: support.php");   // Recharge la même page
+    header("Location: support.php");      // Recharge la même page
     exit;
 }
 
@@ -101,15 +182,6 @@ if ($postData["type"]==="Adhésion simple personne morale"){         // S'il s'a
         // Coder un envoie de mail vers la boite du salarié de la maison de la rivière
 
 }
-
-
-
-
-
-
-
-
-
 
 ?>
 
