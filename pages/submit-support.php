@@ -6,7 +6,7 @@ session_start();
 require_once(__DIR__."/header.php");
 require_once(__DIR__."/../config/databaseconnect.php");
 
-if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {      // Vérification csrf
+if (!isset($_POST['csrf_token_support']) || $_POST['csrf_token_support'] !== $_SESSION['csrf_token_support']) {      // Vérification csrf
     die("Invalid CSRF token.");
 }
 
@@ -135,8 +135,8 @@ function validateInput(&$data, $rules) {   // Fonction générique qui va vérif
 $errors = validateInput($postData, $validationRules);
 
 if(!empty($errors)){
-    $_SESSION['errors'] = $errors;          // Permet de passer les erreurs à la page "support.php"
-    $_SESSION['postData'] = $postData;     // Stocker les données du formulaire pour les reremplir après
+    $_SESSION['errorsSupport'] = $errors;          // Permet de passer les erreurs à la page "support.php"
+    $_SESSION['postedDataSupport'] = $postData;     // Stocker les données du formulaire pour les reremplir après
     header("Location: support.php");      // Recharge la même page
     exit;
 }
