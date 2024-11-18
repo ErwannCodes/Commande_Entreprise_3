@@ -78,19 +78,49 @@
     <section class="about-section">
         <div class="about-section-container">
             <div class="about-section-content">
-                <h2 class="about-headline">Quand Biodiversité Rime <br> Avec Fun:
-                <span class="fluo">La Maison de la Rivière</span><br> vous ouvre ses portes
+                <h2 class="about-headline">
+                <span class="fluo">La Maison de la Rivière</span><br>vous ouvre ses portes
                 </h2>
                 <p>Située à Sizun, c'est un lieu dédié à la découverte <br>de la nature et des écosystèmes aquatiques. <br>En bordure de l'Élorn, elle offre expositions, <br> animations et sentiers pour explorer <br>la biodiversité locale et comprendre <br>les enjeux environnementaux de la région.</p>
                 <a href="#" class="alternate-btn">En Savoir Plus</a>
             </div>
         </div>
     </section>
+    <section class="showOff-section">
+        <div class="showOff-container">
+            <div class="showOff-content">
+                <p class="showOff-title">Une faune et<br> une flore captivantes.</p>
+                <p class="showOff-subtitle">+20 espèces différentes à découvrir ...</p>
+                <div class="showOff-buttons">
+                    <a href="#" class="btn reserve-btn">Réserver ma visite</a>
+                    <a href="#" class="btn donate-btn">Voir la galerie</a>
+                </div>
+            </div>
+
+            <div class="thumbnail">
+                <div class="item">
+                    <img src="./Images/bee.jpg" alt="bee">
+                </div>
+                <div class="item">
+                    <img src="./Images/frog.jpg" alt="frog">
+                </div>
+                <div class="item">
+                    <img src="./Images/poisson-ovale.jpg" alt="fish">
+                </div>
+                <div class="item">
+                    <img src="./Images/oiseau-vert.jpg" alt="bird">
+                </div>
+            </div>
+            <div class="arrows">
+                <button id="prev"><</button>
+                <button id="next">></button>
+            </div>
+        </div>
+        
+    </section>
     <section class="top-activities-section">
-        <h2 class="about-headline2">Le top des <span style="padding: .3rem 1rem .3rem;   
-            border-radius: 20px;
-            background-color: #036905;
-            color: #DDFF95;">activités</span> <br>à faire sur place :</h2>
+        <h2 class="top-activities-title">Le top des <span style="color: #8da486;">activités</span> <br>à faire sur place:
+        </h2>
         <div class="flex-container">
             <div class="left-column">
                 <div class="activity-card" onclick="displayImage('./Images/aquarium.jpg', this)">
@@ -126,11 +156,14 @@
                 <img id="activity-image" src="Images/aquarium.jpg" alt="Activity Image">
             </div>
         </div>
+        
     </section>
+        
     
       
       
-      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+      </script>
       <script>
         function displayImage(imageSrc, element) {
           document.getElementById("activity-image").src = imageSrc;
@@ -139,6 +172,38 @@
           });
           element.classList.add('active');
         }
+      </script>
+
+      <script>
+        const thumbnail = document.querySelector('.thumbnail');
+const items = Array.from(thumbnail.children); // Collect all .item elements
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+
+// Function to rotate items forward
+function rotateNext() {
+    const firstItem = items.shift(); // Remove the first item
+    items.push(firstItem); // Add it to the end
+    updateItemsOrder();
+}
+
+// Function to rotate items backward
+function rotatePrev() {
+    const lastItem = items.pop(); // Remove the last item
+    items.unshift(lastItem); // Add it to the front
+    updateItemsOrder();
+}
+
+// Update the DOM to reflect the new order
+function updateItemsOrder() {
+    thumbnail.innerHTML = ''; // Clear all items
+    items.forEach(item => thumbnail.appendChild(item)); // Re-add items in the new order
+}
+
+// Attach event listeners
+nextButton.addEventListener('click', rotateNext);
+prevButton.addEventListener('click', rotatePrev);
+
       </script>
       
       
