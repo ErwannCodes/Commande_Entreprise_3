@@ -21,7 +21,7 @@ if(empty($_SESSION["csrf_token_contact"])){                  // Création d'un t
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css"> <!-- Lien relatif au CSS -->
+    <link rel="stylesheet" href="../css/style.css"> <!-- Lien relatif au CSS -->
 </head>
 
 <body>
