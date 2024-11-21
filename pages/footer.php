@@ -10,7 +10,6 @@
 <div class="partners-section">
     <div class="marquee">
         <div class="marquee-content">
-            <!-- Partner logos will scroll here -->
             <img src="../assets/images/landivisiau.svg" alt="Pays de Landivisiau" class="partner-logo">
             <img src="../assets/images/KmYqX8CAkjNlVNQ.png" alt="Mairie de Sizun" class="partner-logo">
             <img src="../assets/images/logo-aappam-elorn-encart.png" alt="Syndicat de Bassin de l'Elorn" class="partner-logo">
@@ -19,6 +18,8 @@
             <img src="../assets/images/bretagne_tourisme.png" alt="Tourisme en Bretagne" class="partner-logo">
             <img src="../assets/images/finistere.png" alt="Tout commence en Finistère" class="partner-logo">
             <img src="../assets/images/roscoff.png" alt="Roscoff-Tourisme" class="partner-logo">
+            <img src="../assets/images/logoPRE4.jpg" alt="Pêche Rivière Environnement" class="partner-logo">
+            <img src="../assets/images/Logo_MRB.jpg" alt="Maison de la Rivière et de la Biodiversité" class="partner-logo">
         </div>
     </div>
 </div>
