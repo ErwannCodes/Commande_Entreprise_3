@@ -4,29 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css"> 
+    <link rel="stylesheet" href="../css/header.css"> 
 </head>
 
-<nav class="navigation">
+<header class="navigation">
     <div class="logo-section">
-        <a href="../index.php" >
-            <img src="../assets/images/plura-logo.svg" alt="Plura_logo" class="logo">
-        </a>
-        <span class="site-title">MaisonSizun</span>
+        <span class="site-title">
+            <a href="/index.php">MaisonSizun.
+            </a>
+        </span>
     </div>
 
     <div class="main-nav">
-        <ul>
-            <li><a href="/pages/presentation.php">Qui sommes-nous ?</a></li>
-            <li><a href="/pages/activities.php">Activités et services</a></li>
-            <li><a href="/pages/school.php">Scolaire et périscolaire</a></li>
-            <li><a href="/pages/support.php">Nous soutenir</a></li>
-            <li><a href="/pages/contact.php">Nous contacter</a></li>
-        </ul>
+        <div class="left-nav">
+            <ul>
+                <li><a href="/pages/activities.php">Activités & Services</a></li>
+                <li><a href="/pages/school.php">Scolaire & Périscolaire</a></li>
+            </ul>
+        </div>
+        <div class="right-nav">
+            <ul>
+                <li><a href="/pages/presentation.php">A propos</a></li>
+                <li><a href="/pages/support.php">Nous Soutenir</a></li>
+                <li><a href="/pages/contact.php">Contacter</a></li>
+            </ul>
+        </div>
     </div>
-
+    
     <div class="user-section">
-        <a href="" class="join-btn">Adhérer</a>
+        <a href="#" class="join-btn">Adhérer
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
     </div>
-
-</nav>
+</header>

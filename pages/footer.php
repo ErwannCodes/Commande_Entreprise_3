@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -22,4 +22,4 @@
             <img src="../assets/images/Logo_MRB.jpg" alt="Maison de la Rivière et de la Biodiversité" class="partner-logo">
         </div>
     </div>
-</div>
+</div> -->

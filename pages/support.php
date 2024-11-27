@@ -1,6 +1,6 @@
 <?php 
 
-require_once(__DIR__."/header.php");
+require_once(__DIR__."\header.php");
 
 session_start();                                     // Lancement d'une session afin de récupérer les éventuelles erreurs levées dans le fichier de vérification "submit-support.php" 
                                                     // ainsi que les informations entrées par l'utilisateur pour lui éviter de les retaper.

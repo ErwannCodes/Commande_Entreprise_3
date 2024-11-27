@@ -38,3 +38,71 @@ document.addEventListener('DOMContentLoaded', function () {
     // Vérifiez la sélection initiale (au cas où un bouton serait pré-sélectionné)
     toggleForms();
 });
+
+
+
+// Script venant de la branche master
+    // Dynamically load Font Awesome script
+(function loadFontAwesome() {
+    const script = document.createElement('script');
+    script.src = "https://kit.fontawesome.com/a076d05399.js";
+    script.crossOrigin = "anonymous";
+    document.head.appendChild(script);
+})();
+
+// Function to display an image and highlight the active card
+function displayImage(imageSrc, element) {
+    const activityImage = document.getElementById("activity-image");
+    const activityCards = document.querySelectorAll('.activity-card');
+
+    if (activityImage) {
+        activityImage.src = imageSrc;
+    }
+
+    activityCards.forEach(card => {
+        card.classList.remove('active');
+    });
+
+    if (element) {
+        element.classList.add('active');
+    }
+}
+
+// Logic for rotating thumbnail items
+(function handleThumbnailRotation() {
+    const thumbnail = document.querySelector('.thumbnail');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+
+    if (!thumbnail || !prevButton || !nextButton) {
+        console.warn("Thumbnail or navigation buttons not found.");
+        return;
+    }
+
+    const items = Array.from(thumbnail.children);
+
+    // Rotate items forward
+    function rotateNext() {
+        const firstItem = items.shift(); // Remove the first item
+        items.push(firstItem); // Add it to the end
+        updateItemsOrder();
+    }
+
+    // Rotate items backward
+    function rotatePrev() {
+        const lastItem = items.pop(); // Remove the last item
+        items.unshift(lastItem); // Add it to the front
+        updateItemsOrder();
+    }
+
+    // Update the DOM to reflect the new order
+    function updateItemsOrder() {
+        thumbnail.innerHTML = ''; // Clear all items
+        items.forEach(item => thumbnail.appendChild(item)); // Re-add items in the new order
+    }
+
+    // Attach event listeners
+    nextButton.addEventListener('click', rotateNext);
+    prevButton.addEventListener('click', rotatePrev);
+})();
+
