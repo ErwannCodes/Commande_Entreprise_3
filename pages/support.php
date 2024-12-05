@@ -1,14 +1,23 @@
-<?php require_once(__DIR__."/header.php"); ?>
+<?php 
 
-<style>
-    #form1, #form2 {
-        display: none;
-    }
-</style>
+require_once(__DIR__."\header.php");
+
+session_start();                                     // Lancement d'une session afin de récupérer les éventuelles erreurs levées dans le fichier de vérification "submit-support.php" 
+                                                    // ainsi que les informations entrées par l'utilisateur pour lui éviter de les retaper.
+$errors = $_SESSION['errorsSupport'] ?? [];
+$postedData = $_SESSION['postedDataSupport'] ?? [];
+unset($_SESSION['errorsSupport'], $_SESSION['postedDataSupport']);   
+
+if(empty($_SESSION["csrf_token_support"])){                  // Création d'un token csrf afin de se protéger des attaques csrf
+    $_SESSION["csrf_token_support"] = bin2hex(random_bytes(32));
+}
+
+?>
 
 
 <!DOCTYPE html>
 <html lang='en'>
+
     <head>
         <meta charset="UTF-8">
         <title>Formulaire d'adhésion</title>
@@ -23,130 +32,99 @@
         <ul> <p> prenez part aux décisions lors de notre assemblée générale annuelle</p></ul>
 
         <h1> Formules d'adhésion</h1>
-        <ul><p> Adhésion simple personne morale :       25 €   </p></ul>
-        <ul><p> Adhésion association de soutien :       50 €   </p></ul>
-        <ul><p> Adhésion association de partenariat :   100 €  </p></ul>
-        <ul><p> Adhésion entreprise :                   200€   </p></ul>
-
-    </div>
- 
-    <div class=""> 
-        <input type="radio" id="option1" name="formOption" value="form1"> 
-        <label for="option1">Adhésion simple personne moral</label> 
+        <input type="radio" id="option1" name="formOption" value="type1"> 
+        <label for="option1">Adhésion simple personne morale :       25 €</label> 
         
-        <input type="radio" id="option2" name="formOption" value="form2"> 
-        <label for="option2">Adhésion association de soutien</label> 
+        <input type="radio" id="option2" name="formOption" value="type2"> 
+        <label for="option2">Adhésion association de soutien :       50 €</label> 
 
-        <input type="radio" id="option3" name="formOption" value="form2"> 
-        <label for="option1">Adhésion association de partenariat</label> 
+        <input type="radio" id="option3" name="formOption" value="type3"> 
+        <label for="option1">Adhésion association de partenariat :   100 €</label> 
         
-        <input type="radio" id="option4" name="formOption" value="form2"> 
-        <label for="option2">Adhésion entreprise </label>
+        <input type="radio" id="option4" name="formOption" value="type4"> 
+        <label for="option2">Adhésion entreprise :                   200€ </label>
 
     </div>
 
 
-    <!-- Formulaire pour les personnes morales -->
+    <form action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="type" value="">
+        <input type="hidden" name="csrf_token_support" value="<?= htmlspecialchars($_SESSION['csrf_token_support']) ?>">
 
-    <form id="form1" action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="type" value="Adhésion simple personne morale">
-
-        <input id="structure_name" type="hidden" name="structure_name" value="null">
-
-        <div class="first_namediv">                 <!-- Prénom -->
+        <div id="dynamicField1">
+            <div class="field_div">                  <!-- Nom de la structure -->
+                <label for="structure_name" class="form-label">Nom de la structure :</label>
+                <input type="text" class="form-control" id="structure_name" name="structure_name" value="<?php echo isset($postedDataSupport['structure_name']) ? htmlspecialchars($postedDataSupport['structure_name']) : ''; ?>" required>
+                <?php if (isset($errors['structure_name'])): ?>
+                    <p class="error-message"><?= htmlspecialchars($errors['structure_name']) ?></p>
+                <?php endif; ?>        
+            </div>
+        </div>
+        
+        <div class="field_div">                 
+            
+            <!-- Prénom -->
             <label for="first_name" class="form-label">Prénom :</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" required> 
-        </div> 
+            <input type="text" class="form-control" id="first_name" name="first_name" value="<?= htmlspecialchars($postedDataSupport['first_name'] ?? '') ?>" required>
+            <?php if (isset($errors['first_name'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['first_name']) ?></p>
+            <?php endif; ?>
         
-        <div class="last_namediv">                  <!-- Nom -->
+            <!-- Nom -->
             <label for="last_name" class="form-label">Nom de famille :</label> 
-            <input type="text" class="form-control" id="last_name" name="last_name" required> 
-        </div>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="<?= htmlspecialchars($postedDataSupport['last_name'] ?? '') ?>" required>
+            <?php if (isset($errors['last_name'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['last_name']) ?></p>
+            <?php endif; ?>
 
-        <div class="adressdiv">                     <!-- L'adresse -->
+            <!-- L'adresse -->
             <label for="adress" class="form-label">Adresse postale :</label>
-            <input type="text" class="form-control" id="adress" name="adress" required>
-        </div>
+            <input type="text" class="form-control" id="adress" name="adress" value="<?= htmlspecialchars($postedDataSupport['adress'] ?? '') ?>" required>
+            <?php if (isset($errors['adress'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['adress']) ?></p>
+            <?php endif; ?>
 
-        <div class="postal_codediv">                <!-- Code postal -->
+            <!-- Code postal -->
             <label for="postal_code" class="form-label">Code postal :</label>
-            <input type="text" class="form-control" id="postal_code" name="postal_code" required>
-        </div>
+            <input type="text" class="form-control" id="postal_code" name="postal_code" value="<?= htmlspecialchars($postedDataSupport['postal_code'] ?? '') ?>" required>
+            <?php if (isset($errors['postal_code'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['postal_code']) ?></p>
+            <?php endif; ?>
 
-        <div class="citydiv">                       <!-- Commune -->
+            <!-- Commune -->
             <label for="city" class="form-label">Commune :</label>
-            <input type="text" class="form-control" id="city" name="city" required>
-        </div>
+            <input type="text" class="form-control" id="city" name="city" value="<?= htmlspecialchars($postedDataSupport['city'] ?? '') ?>" required>
+            <?php if (isset($errors['city'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['city']) ?></p>
+            <?php endif; ?>
 
-        <div class="phonediv">                      <!-- Téléphone -->
+            <!-- Téléphone -->
             <label for="phone" class="form-label">Téléphone :</label>
-            <input type="tel" class="form-control" id="phone" name="phone" required>
-        </div>
+            <input type="tel" class="form-control" id="phone" name="phone" value="<?= htmlspecialchars($postedDataSupport['phone'] ?? '') ?>" required>
+            <?php if (isset($errors['phone'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['phone']) ?></p>
+            <?php endif; ?>
 
-        <div class="emaildiv">                      <!-- L'email -->
+            <!-- L'email -->
             <label for="email" class="form-label">Email :</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" required>
+            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($postedDataSupport['email'] ?? '') ?>" required>
+            <?php if (isset($errors['email'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['email']) ?></p>
+            <?php endif; ?>        
         </div>
 
-        <div class="occupationdiv">                 <!-- Profession / Compétences -->
-            <label for="occupation" class="form-label">Profession / Compétences :</label>
-            <input type="text" class="form-control" id="occupation" name="occupation" required>
+        <div id="dynamicField2">
+            <div class="field_div">                 <!-- Profession / Compétences -->
+                <label for="occupation" class="form-label">Profession / Compétences :</label>
+                <input type="text" class="form-control" id="occupation" name="occupation" value="<?= htmlspecialchars($postedDataSupport['occupation'] ?? '') ?>" required>
+                <?php if (isset($errors['occupation'])): ?>
+                    <p class="error-message"><?= htmlspecialchars($errors['occupation']) ?></p>
+                <?php endif; ?>         
+            </div>
         </div>
+        
 
         <div class="buttondiv">                     <!-- Bouton d'envoi -->
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        </div>
-
-    </form>
-
-    <!-- Formulaire pour les associations / entreprises -->
-
-    <form id="form2" action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
-        <input id="type" type="hidden" name="type" value="">
-
-        <input id="occupation" type="hidden" name="occupation" value="null">
-
-        <div class="structure_namediv">                  <!-- Nom de la structure -->
-            <label for="structure_name" class="form-label">Nom de la structure :</label>
-            <input type="text" class="form-control" id="structure_name" name="structure_name" required>
-        </div>
-
-        <div class="first_namediv">                     <!-- Prénom du président(e)-->
-            <label for="first_name" class="form-label">Prénom du président(e):</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" required> 
-        </div>
-        
-        <div class="last_namediv">                      <!-- Nom du president(e)-->
-            <label for="last_name" class="form-label">Nom du président(e) :</label> 
-            <input type="text" class="form-control" id="last_name" name="last_name" required> 
-        </div>
-
-        <div class="adressdiv">                         <!-- L'adresse de la structure -->
-            <label for="adress" class="form-label">Adresse postale de la structure :</label>
-            <input type="text" class="form-control" id="adress" name="adress" required>
-        </div>
-
-        <div class="postal_codediv">                    <!-- Code postal -->
-            <label for="postal_code" class="form-label">Code postal :</label>
-            <input type="text" class="form-control" id="postal_code" name="postal_code" required>
-        </div>
-
-        <div class="citydiv">                           <!-- Commune  -->
-            <label for="city" class="form-label">Commune :</label>
-            <input type="text" class="form-control" id="city" name="city" required>
-        </div>
-
-        <div class="phonediv">                          <!-- Téléphone -->
-            <label for="phone" class="form-label">Téléphone :</label>
-            <input type="tel" class="form-control" id="phone" name="phone" required>
-        </div>
-
-        <div class="emaildiv">                         <!-- L'email -->
-            <label for="email" class="form-label">Email :</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" required>
-        </div>
-
-        <div class="buttondiv">                        <!-- Bouton d'envoi -->
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
 

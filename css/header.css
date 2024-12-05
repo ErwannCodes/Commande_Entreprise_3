@@ -1,0 +1,109 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Host Grotesk", sans-serif;
+}
+
+/* Header navigation */
+.navigation {
+    width: (100vw - 1.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    margin-right: 2rem;
+    position: relative;
+}
+
+
+.logo-section {
+    margin-left: 2rem;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.site-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.site-title a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-nav {
+    width: 100%;
+    min-height: 50px;
+    position: relative;
+}
+
+.left-nav {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left:5%;
+    gap: 1rem;
+    top:25%
+}
+
+.right-nav {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right:2%;
+    top: 25%;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav ul li {
+    list-style: none;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.join-btn {
+    background-color: #DDFF95;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: black;
+    font-weight: light;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+    background-color: #95cd63;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .main-nav {
+        display: block;
+    }
+}
