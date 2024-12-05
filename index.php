@@ -25,7 +25,7 @@
     <section class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
-                <p class="hero-title">Plongez en Sizun,<br> Goutte après Goutte.</p>
+                <p class="hero-title">Explorez la richesse de la biodiversité locale, <br> découvrez le patrimoine naturel des rivières bretonne</p>
                 <p class="hero-subtitle">Venez vivre une expérience <span>unique au cœur de la nature</span></p>
                 <div class="hero-buttons">
                     <a href="#" class="btn reserve-btn">Réserver ma visite</a>
@@ -60,7 +60,7 @@
                 <h2 class="about-headline">
                 <span class="fluo">La Maison de la Rivière</span><br>vous ouvre ses portes
                 </h2>
-                <p>Située à Sizun, c'est un lieu dédié à la découverte <br>de la nature et des écosystèmes aquatiques. <br>En bordure de l'Élorn, elle offre expositions, <br> animations et sentiers pour explorer <br>la biodiversité locale et comprendre <br>les enjeux environnementaux de la région.</p>
+                <p>La Maison de la Rivière, de la Biodiversité et du Climat de Sizun <br> vous invite à découvrir "en immersion" les écosystèmes aquatiques du Finistère. <br> Située au bord de l’Élorn, au cœur du Parc Naturel Régional d’Armorique, <br> notre centre propose un voyage éducatif et ludique adapté à tous les âges.</p>
                 <a href="#" class="alternate-btn">En Savoir Plus</a>
             </div>
         </div>
@@ -104,12 +104,12 @@
         </h2>
         <div class="flex-container">
             <div class="left-column">
-                <div class="activity-card" onclick="displayImage('assets/images/aquarium.jpg', this)">
+                <div class="activity-card" onclick="displayImage('assets/images/Conférences-Climat.png', this)">
                     <div class="icon-circle" style="background-color: #3E5D22;">
                         <i class="fa-solid fa-person-hiking"></i>
                     </div>
                     <div class="text-content">
-                        <h3>Visite du Musée</h3>
+                        <h3>Expositions permanentes et programme annuel</h3>
                         <p>Explorez le musée de la Maison de la Rivière et découvrez l’histoire fascinante de la rivière et de ses écosystèmes. De la biodiversité à l’évolution de notre environnement, plongez dans un univers interactif qui vous connecte à la nature.</p>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                         <i class="fa-solid fa-fish"></i>
                     </div>
                     <div class="text-content">
-                        <h3>Classes Scolaires et Classes Vertes</h3>
+                        <h3>Classes scolaires et classes vertes</h3>
                         <p>Confiez-nous vos classes pour une expérience éducative inoubliable en pleine nature. Nos classes vertes sont conçues pour éveiller la curiosité des élèves et les sensibiliser à la biodiversité et à la protection de l’environnement. Une façon unique d’apprendre tout en explorant !</p>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                         <i class="fa-solid fa-briefcase"></i>
                     </div>
                     <div class="text-content">
-                        <h3>Réunions et Conférences au Tiers Lieu</h3>
+                        <h3>Réunions et conférences au tiers-lieu</h3>
                         <p>Profitez de notre tiers lieu pour organiser vos réunions, séminaires ou conférences. Offrez à vos participants un cadre inspirant, entre nature et modernité, pour des échanges fructueux et un ressourcement au vert.</p>
                     </div>
                 </div>
