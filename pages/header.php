@@ -10,8 +10,7 @@
 <header class="navigation">
     <div class="logo-section">
         <span class="site-title">
-            <a href="/index.php">MaisonSizun.
-            </a>
+            <a href="/index.php">MaisonSizun. </a>
         </span>
     </div>
 
@@ -30,10 +29,5 @@
             </ul>
         </div>
     </div>
-    
-    <div class="user-section">
-        <a href="#" class="join-btn">Adhérer
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-    </div>
+
 </header>

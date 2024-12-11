@@ -4,7 +4,6 @@
 session_start();
 
 require_once(__DIR__."/header.php");
-require_once(__DIR__."/../config/databaseconnect.php");
 
 if (!isset($_POST['csrf_token_support']) || $_POST['csrf_token_support'] !== $_SESSION['csrf_token_support']) {      // Vérification csrf
     die("Invalid CSRF token.");
@@ -145,22 +144,6 @@ $currentDateTime = date('Y-m-d H:i:s');
 
 $valueStructure = $postData['structure_name'] ?? null;
 $valueOccupation = $postData['occupation'] ?? null;
-
-// $sqlQuery = 'INSERT INTO membership(type, structure_name, first_name, last_name, adress, postal_code, city, phone, email, occupation, date) VALUES (:type, :structure_name, :first_name, :last_name, :adress, :postal_code, :city, :phone, :email, :occupation, :date)';
-// $insertMembership = $mysqlClient->prepare($sqlQuery);
-// $insertMembership->execute([
-//     'type' => $postData['type'],
-//     'structure_name' => $valueStructure,
-//     'first_name' => $postData["first_name"],
-//     'last_name' => $postData["last_name"],
-//     'adress' => $postData["adress"],
-//     'postal_code' => $postData["postal_code"],
-//     'city' => $postData["city"],
-//     'phone' => $postData["phone"],
-//     'email' => $postData["email"],
-//     'occupation' => $valueOccupation,
-//     'date' => $currentDateTime,
-//     ]);
 
 ?>
 

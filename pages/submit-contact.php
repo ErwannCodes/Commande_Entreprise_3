@@ -97,9 +97,8 @@ if(!empty($errors)){
 $currentDateTime = date('Y-m-d H:i:s');
 
 try {
-    
-} catch (PDOException $exception) {
 
+} catch (PDOException $exception) {
     // Envoi de mail à mdr pour signaler le problème
 }
 
