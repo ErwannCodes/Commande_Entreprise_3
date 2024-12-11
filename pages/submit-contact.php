@@ -6,7 +6,6 @@
 session_start();
 
 require_once(__DIR__."/header.php");
-require_once(__DIR__."/../config/databaseconnect.php");
 
 if (!isset($_POST['csrf_token_contact']) || $_POST['csrf_token_contact'] !== $_SESSION['csrf_token_contact']) {      // Vérification CSRF
     die("Une erreur est survenue, veuillez réessayer plus tard.");
@@ -98,19 +97,8 @@ if(!empty($errors)){
 $currentDateTime = date('Y-m-d H:i:s');
 
 try {
-    $sqlQuery = 'INSERT INTO contact(first_name, last_name, email, message, date) VALUES (:first_name, :last_name, :email, :message, :date)';
-    $insertContact = $mysqlClient->prepare($sqlQuery);
-    $insertContact->execute([
-        'first_name' => $postData["first_name"],
-        'last_name' => $postData["last_name"],
-        'email' => $postData["email"],
-        'message' => $postData["message"],
-        'date' => $currentDateTime,
-        ]);
-    $insertionERROR = null;
-
+    
 } catch (PDOException $exception) {
-    $insertionERROR = $exception->getMessage();
 
     // Envoi de mail à mdr pour signaler le problème
 }
