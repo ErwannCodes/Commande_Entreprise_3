@@ -24,7 +24,7 @@
         </div>
         <div class="right-nav">
             <ul>
-                <li><a href="/pages/presentation.php">A propos</a></li>
+                <li><a href="/pages/presentation.php">À propos</a></li>
                 <li><a href="/pages/support.php">Nous Soutenir</a></li>
                 <li><a href="/pages/contact.php">Contacter</a></li>
             </ul>
