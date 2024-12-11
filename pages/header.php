@@ -9,9 +9,7 @@
 
 <header class="navigation">
     <div class="logo-section">
-        <span class="site-title">
-            <a href="/index.php">MaisonSizun. </a>
-        </span>
+        <img src="/assets/images/Logo_MRB.jpg" alt="Logo MRB" class="logo">
     </div>
 
     <div class="main-nav">

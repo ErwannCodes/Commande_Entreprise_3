@@ -29,6 +29,12 @@ body {
     gap: 0.5rem;
 }
 
+.logo {
+    max-width: 175px; /* Ajuste la largeur maximale du logo */
+    max-height: auto; /* Conserve les proportions */
+    display: block;
+}
+
 .site-title {
     font-size: 1.8rem;
     font-weight: 600;
