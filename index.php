@@ -42,13 +42,19 @@
         <div class="marquee">
             <div class="marquee-content">
                 <!-- Partner logos will scroll here -->
+                <img src="assets/images/Académie de rennes.jpg" alt="Académie de rennes" class="partner-logo">
+                <img src="assets/images/logo CD 29.png" alt="CD" class="partner-logo">
+                <img src="assets/images/logo OFB.png" alt="OFB" class="partner-logo">
+                <img src="assets/images/LOGO_PASS_CULTURE_HD (1).png" alt="Pass Culture" class="partner-logo">
+                <img src="assets/images/logo_valeurs_PNRA.jpg" alt="PNRA valeurs" class="partner-logo">
+                <img src="assets/images/finistere.png" alt="Tout commence en Finistère" class="partner-logo">
                 <img src="assets/images/landivisiau.svg" alt="Pays de Landivisiau" class="partner-logo">
                 <img src="assets/images/KmYqX8CAkjNlVNQ.png" alt="Mairie de Sizun" class="partner-logo">
                 <img src="assets/images/logo-aappam-elorn-encart.png" alt="Syndicat de Bassin de l'Elorn" class="partner-logo">
                 <img src="assets/images/abpm.png" alt="Association pour la pêche à la Mouche" class="partner-logo">
+                <img src="assets/images/syndicat-de-bassin-elorn.jpg" alt="Syndicat de bassin elorn" class="partner-logo">
                 <img src="assets/images/mammologie.png" alt="Groupe Mammalogique Breton" class="partner-logo">
                 <img src="assets/images/bretagne_tourisme.png" alt="Tourisme en Bretagne" class="partner-logo">
-                <img src="assets/images/finistere.png" alt="Tout commence en Finistère" class="partner-logo">
                 <img src="assets/images/roscoff.png" alt="Roscoff-Tourisme" class="partner-logo">
             </div>
         </div>
