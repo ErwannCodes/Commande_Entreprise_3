@@ -8,24 +8,27 @@
 </head>
 
 <header class="navigation">
-    <div class="logo-section">
-        <span class="site-title">
-            <a href="/index.php">MaisonSizun. </a>
-        </span>
+<div class="logo-section" >
+    <a href="/index.php">
+    <img src="/assets/images/Logo_MRB.jpg" alt="Logo MRB" class="logo">
+    </a>
+        
     </div>
+
 
     <div class="main-nav">
         <div class="left-nav">
             <ul>
-                <li><a href="/pages/activities.php">Activités & Services</a></li>
-                <li><a href="/pages/school.php">Scolaire & Périscolaire</a></li>
+                <li><a href="/pages/presentation.php">Bienvenue</a></li>
+                <li><a href="/pages/activities.php">Activités</a></li>
+                <li><a href="/pages/expos.php">Expos & Programme</a></li>
             </ul>
         </div>
         <div class="right-nav">
             <ul>
-                <li><a href="/pages/presentation.php">À propos</a></li>
-                <li><a href="/pages/support.php">Nous Soutenir</a></li>
-                <li><a href="/pages/contact.php">Contacter</a></li>
+                <li><a href="/pages/tiersLieu.php">Le Tiers-lieu</a></li>
+                <li><a href="/pages/savoir.php">Savoir-faire</a></li>
+                <li><a href="/pages/contact.php">Contact</a></li>
             </ul>
         </div>
     </div>
