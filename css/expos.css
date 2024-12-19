@@ -1,0 +1,84 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+}
+
+.page-header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1E3A2B;
+    color: white;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1rem;
+}
+
+.expos-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.expos-section h2 {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 1rem;
+}
+
+.description {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.books-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.book-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-author {
+    padding: 2rem;
+    background-color: #f1f1f1;
+}
+
+.about-author h2 {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.author-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.author-content a {
+    color: #1E3A2B;
+    text-decoration: none;
+}
+
+.author-content a:hover {
+    text-decoration: underline;
+}

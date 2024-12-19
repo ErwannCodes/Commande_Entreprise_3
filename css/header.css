@@ -1,3 +1,4 @@
+
 /* General Reset */
 * {
     margin: 0;
@@ -30,7 +31,7 @@ body {
 }
 
 .logo {
-    max-width: 175px; /* Ajuste la largeur maximale du logo */
+    max-width: 125px; /* Ajuste la largeur maximale du logo */
     max-height: auto; /* Conserve les proportions */
     display: block;
 }
@@ -49,6 +50,31 @@ body {
     min-height: 50px;
     position: relative;
 }
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    position: relative;
+}
+
+.main-nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Position sous le texte */
+    left: 0; /* Aligne le soulignement sur la gauche */
+    width: 50%; /* Longueur de l'underline */
+    height: 2px; /* Épaisseur de l'underline */
+    background-color: black;
+    transform: scaleX(0); /* Masque initial */
+    transform-origin: left; /* Animation commence depuis la gauche */
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-nav ul li a:hover::after {
+    transform: scaleX(1); /* Affiche l'underline */
+}
+
 
 .left-nav {
     position: absolute;
@@ -113,3 +139,44 @@ body {
         display: block;
     }
 }
+@media (max-width: 768px) {
+    /* Masque le menu principal et affiche le hamburger */
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        margin-right: 2rem;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+}
+
