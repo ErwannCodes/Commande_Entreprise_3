@@ -1,0 +1,160 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+}
+
+.page-header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1E3A2B;
+    color: white;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1rem;
+}
+
+.activities-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 2rem;
+}
+.section-title{
+    text-align: center;
+}
+
+.activity-list {
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow-x: auto;
+}
+.details-btn{
+    position: absolute;
+    bottom: 15px;
+}
+
+.activity-card {
+    position: relative;
+    flex: 0 0 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.activity-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.activity-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.activity-info h3 {
+    font-size: 1.2rem;
+    color: #1E3A2B;
+    margin-bottom: 0.5rem;
+}
+
+.short-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.details {
+    font-size: 0.9rem;
+    color: #333;
+    display: none;
+}
+
+.details.visible {
+    display: block;
+}
+
+.btn {
+    margin-top: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    background-color: #1E3A2B;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #146132;
+}
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #555;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

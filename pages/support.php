@@ -13,6 +13,7 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
 }
 
 ?>
+<?php require_once(__DIR__ . "/footer.php"); ?>
 
 
 <!DOCTYPE html>

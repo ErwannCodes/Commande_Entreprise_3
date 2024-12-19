@@ -2,6 +2,7 @@
 session_start(); // Ensure session_start() is the first statement
 
 include(__DIR__.'/header.php');
+
 // include(__DIR__.'../css/header.css'); // Use forward slashes for paths
 
 // Initialize variables
@@ -14,6 +15,7 @@ if (empty($_SESSION["csrf_token_contact"])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -21,6 +23,7 @@ if (empty($_SESSION["csrf_token_contact"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css"> <!-- Correct CSS Path -->
+    <link rel="stylesheet" href="../css/footer.css"> <!-- Correct CSS Path -->
         <!-- External Fonts and Icons -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -11,6 +11,7 @@ body{
 .container{
 	max-width: 1170px;
 	margin:auto;
+	background-color: #3E5D22;
 }
 .row{
 	display: flex;

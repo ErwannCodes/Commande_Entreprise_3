@@ -509,12 +509,21 @@ input[type="submit"]:hover {
     background-color: #95cd63; /* Vert  foncé au survol */
 }
 
-/* h2,p {
-    margin: 1em auto;
-    text-align: center;
-}
+@media (max-width: 768px) {
+    /* Images Hero Section */
+    .hero-section img {
+        width: 100%;
+        height: auto;
+    }
 
-label{
-    display: block;
-    margin: 0.5rem ;
-} */
+    /* Images About Section */
+    .about-section img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Images dans les Sections Texte-Image */
+    .text-image-section img {
+        display: none;
+    }
+}

@@ -1,0 +1,108 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+}
+
+.page-header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1E3A2B;
+    color: white;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1rem;
+}
+
+/* Intro Section */
+.intro-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    gap: 2rem;
+}
+
+.intro-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.intro-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.intro-text h2 {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 1.5rem;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.intro-image {
+    flex: 1;
+    max-width: 500px;
+}
+
+.intro-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Project Section */
+.project-section {
+    background-color: #f1f1f1;
+    padding: 3rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 2rem;
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 300px;
+    text-align: left;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    color: #1E3A2B;
+    margin-bottom: 1rem;
+}
+
+.project-card p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}

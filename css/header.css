@@ -139,3 +139,44 @@ body {
         display: block;
     }
 }
+@media (max-width: 768px) {
+    /* Masque le menu principal et affiche le hamburger */
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        margin-right: 2rem;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+}
+

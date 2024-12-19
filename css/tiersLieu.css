@@ -1,0 +1,140 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+}
+
+.page-header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1E3A2B;
+    color: white;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1rem;
+}
+
+/* Tiers-Lieu Intro Section */
+.tiers-lieu-intro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem; /* Increased gap between content and image */
+    padding: 3rem; /* Added padding around the section */
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 1.5rem; /* Increased margin below heading */
+}
+
+.content p {
+    font-size: 1rem;
+    line-height: 1.8; /* Increased line height for better readability */
+    margin-bottom: 1.5rem; /* Increased margin between paragraphs */
+}
+
+.image-container {
+    flex: 1;
+    max-width: 500px;
+}
+
+.tiers-lieu-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiers-Lieu Features Section */
+.tiers-lieu-features {
+    padding: 3rem; /* Increased padding */
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.tiers-lieu-features h2 {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 2rem; /* Increased space below heading */
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem; /* Increased gap between feature cards */
+}
+
+.feature-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem; /* Added padding inside the card */
+    text-align: center;
+    width: 300px;
+}
+
+.feature-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem; /* Increased space below the image */
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    color: #1E3A2B;
+    margin-bottom: 1rem; /* Increased margin below the heading */
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem; /* Added spacing between text and button */
+}
+
+/* Tiers-Lieu Contact Section */
+.tiers-lieu-contact {
+    text-align: center;
+    padding: 3rem; /* Increased padding */
+}
+
+.tiers-lieu-contact h2 {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 1.5rem; /* Increased space below heading */
+}
+
+.tiers-lieu-contact p {
+    font-size: 1rem;
+    line-height: 1.8; /* Increased line height for better readability */
+    margin-bottom: 2rem; /* Increased space below text */
+}
+
+.contact-btn {
+    padding: 0.8rem 2.5rem; /* Increased padding inside the button */
+    background-color: #1E3A2B;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.contact-btn:hover {
+    background-color: #146132;
+}
