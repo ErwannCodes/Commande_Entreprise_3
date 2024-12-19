@@ -1,0 +1,58 @@
+/* Section globale */
+body {
+    font-family: 'Host Grotesk', sans-serif;
+    background-color: #F8F9FA; /* Couleur de fond douce */
+    color: #333; /* Couleur principale du texte */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* Pour étirer le contenu principal et garder le footer en bas */
+}
+
+/* Section héros */
+.hero-section {
+    background-color: #1E3A2B; /* Couleur de fond au cas où l'image ne charge pas */
+    color: #FFFFFF; /* Texte en blanc */
+    padding: 60px 20px;
+    text-align: center; /* Centrer les textes */
+    background-image: url('/assets/images/maison-riviere.jpg'); /* Chemin de l'image */
+    background-size: cover; /* Ajuste l'image pour couvrir toute la section */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto; /* Centrer horizontalement */
+}
+
+/* Titre */
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700; /* Accentuation du titre */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+/* Sous-titre */
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
