@@ -34,10 +34,10 @@
   	 		<div class="footer-col">
   	 			<h4>Nos contacts</h4>
   	 			<ul>
-  	 				<li><a href="#">maisondelariviere@gmail.com</a></li>
-  	 				<li><a href="#">+33 0786598623</a></li>
-  	 				<li><a href="#">+33 0687412588</a></li>
-  	 				<li><a href="#">213, avenue sizun</a></li>
+  	 				<li><a href="#">maison-de-la-riviere@wanadoo.fr</a></li>
+  	 				<li><a href="#">+33 2 98 68 86 33</a></li>
+  	 				<li><a href="#">+33 6 89 33 62 84</a></li>
+  	 				<li><a href="#">Moulin Vergraon, 29450 Sizun</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">

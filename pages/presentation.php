@@ -73,9 +73,9 @@
                 <h2>Le Bureau de l'Association</h2>
                 <p>La gouvernance collaborative de PRÉ repose sur une présidence tournante, avec une équipe engagée et le soutien d’Anthony Le Gall, salarié permanent.</p>
                 <ul>
-                    <li><strong>Nom 1</strong></li>
-                    <li><strong>Nom 2</strong></li>
-                    <li><strong>Nom 3</strong></li>
+                    <li><strong>Anthony Le Gall</strong></li>
+                    <li><strong>Christophe Bello</strong></li>
+                    <li><strong>Pierre Tandéo</strong></li>
                 </ul>
             </div>
             <img src="/assets/images/photo_section-3_Livre-3.JPG" alt="Membres du bureau" class="section-image">

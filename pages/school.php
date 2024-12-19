@@ -47,8 +47,7 @@
     <div class="container">
         <div class="section">
             <h1>Notre Savoir Faire</h1>
-            <h2>Projets anciens :</h2>
-            <h3>Trame Verte et Bleue : Un Engagement pour la Préservation des Continuités Écologiques</h3>
+            <h2>Trame Verte et Bleue : Un Engagement pour la Préservation des Continuités Écologiques</h2>
             <p>L’association Pêche Rivières Environnement (PRÉ) a piloté un programme ambitieux "Trame Verte et Bleue" à l’échelle locale, soutenu par la Région Bretagne dans le cadre d’un Contrat Nature, ainsi que par l’Union Européenne via les fonds FEADER.</p>
             <h3>Un projet phare : « Restauration et préservation des continuités écologiques de l’Elorn »</h3>
             <p>Ce projet, déployé sur une période de trois ans (2020-2022), a comporté 23 actions concrètes ciblant les 40 hectares de propriétés de l’AAPPMA de l’Elorn. L’objectif principal : développer un pôle régional de compétences en Trame Verte et Bleue, avec un focus sur le bassin versant de l’Elorn, choisi comme site d’expérimentation et de démonstration.</p>
