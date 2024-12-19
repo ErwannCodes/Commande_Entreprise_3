@@ -1,0 +1,108 @@
+/* Section globale */
+body {
+    font-family: 'Host Grotesk', sans-serif;
+    background-color: #F8F9FA; /* Couleur de fond légère pour contraste */
+    color: #333; /* Couleur de texte par défaut */
+    margin: 0;
+    padding: 0;
+}
+
+/*header2 */
+
+.header2 {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1E3A2B;
+    color: white;
+}
+
+.header2 h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header2 p {
+    font-size: 1.2rem;
+}
+
+/* Section héros (contact) */
+.hero-section {
+    padding: 50px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    text-align: center; /* Centrer les textes */
+    background-color: #FFFFFF; /* Fond blanc pour le contraste */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Léger ombrage */
+}
+
+/* Informations de contact */
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #1E3A2B; /* Vert sombre pour un look élégant */
+}
+
+/* Titre de formulaire */
+.hero-section h2 {
+    font-size: 1.8rem;
+    color: #1E3A2B;
+    margin-bottom: 20px;
+}
+
+/* Champs de formulaire */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #1E3A2B; /* Vert sombre au focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(30, 58, 43, 0.5); /* Lueur légère */
+}
+
+/* Messages d'erreur */
+.error-message {
+    color: #E63946; /* Rouge clair pour signaler les erreurs */
+    font-size: 0.9rem;
+    margin-top: -5px;
+    text-align: left;
+}
+
+/* Bouton d'envoi */
+button.btn-primary {
+    background-color: #1E3A2B;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-primary:hover {
+    background-color: #145D37; /* Vert plus foncé au survol */
+}
+
+/* Division du formulaire */
+.field_div {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Boutons */
+.button_div {
+    text-align: center;
+    margin-top: 20px;
+}

@@ -28,6 +28,7 @@
             <ul>
                 <li><a href="/pages/tiersLieu.php">Le Tiers-lieu</a></li>
                 <li><a href="/pages/savoir.php">Savoir-faire</a></li>
+                <li><a href="/pages/support.php">Nous soutenir</a></li>
                 <li><a href="/pages/contact.php">Contact</a></li>
             </ul>
         </div>

@@ -154,7 +154,10 @@ $valueOccupation = $postData['occupation'] ?? null;
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../css/submit-contact-style.css">
+    <link rel="stylesheet" href="/css/submit-support.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
         <!-- External Fonts and Icons -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,9 +176,6 @@ $valueOccupation = $postData['occupation'] ?? null;
     </main>
 </body>
 
-
-<footer>
-    <?php require_once(__DIR__.'/footer.php'); ?>    <!-- PAS SECURISE, A MODIFIER -->
-</footer>
+<?php require_once(__DIR__.'/footer.php'); ?>    <!-- PAS SECURISE, A MODIFIER -->
 
 </html>

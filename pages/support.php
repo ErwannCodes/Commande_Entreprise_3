@@ -13,30 +13,43 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
 }
 
 ?>
-<?php require_once(__DIR__ . "/footer.php"); ?>
 
 
 <!DOCTYPE html>
 <html lang='en'>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Formulaire d'adhésion</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Nous soutenir</title>
+    <title>Notre Savoir Faire</title>
+    <link rel="stylesheet" href="/css/support.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
             <!-- External Fonts and Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
+</head>
 
 
 <body>
-    <div class="">
-        <p> En adhérant à Pêche Rivière Environnement, La Maison de la Rivière et de la Biodiversité vous : </p>
-        <ul> <p> rejoignez notre équipe salarié et bénévoles investi·es pour mener des actions de médiation et d’animation de protection de l’environnement </p> </ul>
-        <ul> <p> participez à la vie de notre association  </p></ul>
-        <ul> <p> prenez part aux décisions lors de notre assemblée générale annuelle</p></ul>
+    <header class="header2">
+        <h1>Soutenir la Maison De La Rivière</h1>
+        <p>Devenez acteur dans la protection de notre environnement</p>
+    </header>
 
+    <div class="description">
+    <p>En adhérant à Pêche Rivière Environnement, La Maison de la Rivière et de la Biodiversité vous :</p>
+    <ul>
+        <li>Rejoignez notre équipe salariée et bénévoles investi·es pour mener des actions de médiation et d’animation de protection de l’environnement.</li>
+        <li>Participez à la vie de notre association.</li>
+        <li>Prenez part aux décisions lors de notre assemblée générale annuelle.</li>
+    </ul>
+</div>
+
+    <div class="buttons">
         <h1> Formules d'adhésion</h1>
         <input type="radio" id="option1" name="formOption" value="type1"> 
         <label for="option1">Adhésion simple personne morale :       25 €</label> 
@@ -49,9 +62,7 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
         
         <input type="radio" id="option4" name="formOption" value="type4"> 
         <label for="option2">Adhésion entreprise :                   200€ </label>
-
     </div>
-
 
     <form action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
         <input type="hidden" name="type" value="">
@@ -139,5 +150,9 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
     <script src="js/functions.js"></script>
 
 </body>
+
+</footer>
+    <?php require_once(__DIR__ . "/footer.php"); ?>
+</footer>
 
 </html>
