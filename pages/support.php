@@ -51,6 +51,8 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
 
     <div class="buttons">
         <h1> Formules d'adhésion</h1>
+        
+        <!--
         <input type="radio" id="option1" name="formOption" value="type1"> 
         <label for="option1">Adhésion simple personne morale :       25 €</label> 
         
@@ -61,7 +63,29 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
         <label for="option1">Adhésion association de partenariat :   100 €</label> 
         
         <input type="radio" id="option4" name="formOption" value="type4"> 
-        <label for="option2">Adhésion entreprise :                   200€ </label>
+        <label for="option2">Adhésion entreprise :                   200€</label>
+        -->
+
+        <label>
+            <input type="radio" id="option1" name="formOption" value="type1">
+            Adhésion simple personne morale :       25 €
+        </label>
+        <br>
+        <label>
+            <input type="radio" id="option2" name="formOption" value="type2">
+            Adhésion association de soutien :       50 €
+        </label>
+        <br>
+        <label>
+            <input type="radio" id="option3" name="formOption" value="type3">
+            Adhésion association de partenariat :   100 €
+        </label>
+        <br>
+        <label>
+            <input type="radio" id="option4" name="formOption" value="type4">
+            Adhésion entreprise :                   200€        
+        </label>
+
     </div>
 
     <form action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
