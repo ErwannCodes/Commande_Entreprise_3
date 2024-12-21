@@ -1,13 +1,10 @@
-/* Section globale */
 body {
     font-family: 'Host Grotesk', sans-serif;
-    background-color: #F8F9FA; /* Couleur de fond légère pour contraste */
-    color: #333; /* Couleur de texte par défaut */
+    background-color: #F8F9FA; 
+    color: #333; 
     margin: 0;
     padding: 0;
 }
-
-/*header2 */
 
 .header2 {
     text-align: center;
@@ -25,36 +22,33 @@ body {
     font-size: 1.2rem;
 }
 
-/* Section héros (contact) */
 .hero-section {
     padding: 50px 20px;
     max-width: 800px;
+    height: 600px;
     margin: 0 auto;
     margin-bottom: 50px;
-    text-align: center; /* Centrer les textes */
-    background-color: #FFFFFF; /* Fond blanc pour le contraste */
+    text-align: center; 
+    background-color: #FFFFFF; 
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Léger ombrage */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Informations de contact */
 .contact-info p {
     margin: 10px 0;
     font-size: 1.1rem;
     text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
-    color: #1E3A2B; /* Vert sombre pour un look élégant */
+    color: #1E3A2B; 
 }
 
-/* Titre de formulaire */
 .hero-section h2 {
     font-size: 1.8rem;
     color: #1E3A2B;
     margin-bottom: 20px;
 }
 
-/* Champs de formulaire */
 .form-control {
     width: 100%;
     padding: 10px;
@@ -66,20 +60,48 @@ body {
 }
 
 .form-control:focus {
-    border-color: #1E3A2B; /* Vert sombre au focus */
+    border-color: #1E3A2B;
     outline: none;
-    box-shadow: 0 0 5px rgba(30, 58, 43, 0.5); /* Lueur légère */
+    box-shadow: 0 0 5px rgba(30, 58, 43, 0.5); 
 }
 
-/* Messages d'erreur */
+textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    max-height: 180px;
+    min-height: 100px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 500px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    textarea {
+        max-width: 100%;
+    }
+
+    form {
+        padding: 10px;
+    }
+}
+
 .error-message {
-    color: #E63946; /* Rouge clair pour signaler les erreurs */
+    color: #E63946; 
     font-size: 0.9rem;
     margin-top: -5px;
     text-align: left;
 }
 
-/* Bouton d'envoi */
 button.btn-primary {
     background-color: #1E3A2B;
     color: #FFFFFF;
@@ -92,16 +114,14 @@ button.btn-primary {
 }
 
 button.btn-primary:hover {
-    background-color: #145D37; /* Vert plus foncé au survol */
+    background-color: #145D37; 
 }
 
-/* Division du formulaire */
 .field_div {
     margin-bottom: 20px;
     text-align: left;
 }
 
-/* Boutons */
 .button_div {
     text-align: center;
     margin-top: 20px;

@@ -41,9 +41,9 @@ if (empty($_SESSION["csrf_token_contact"])) {
     </header>
 
     <div class="contact-info">
-            <p><strong>Adresse :</strong> Moulin Vergraon, 29450 Sizun</p>
-            <p><strong>Numéro de l'association :</strong> 02 98 68 86 33</p>
-        </div>
+        <p><strong>Adresse :</strong> Moulin Vergraon, 29450 Sizun</p>
+        <p><strong>Numéro de l'association :</strong> 02 98 68 86 33</p>
+    </div>
 
     <section class="hero-section">
 

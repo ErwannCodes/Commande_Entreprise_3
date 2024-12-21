@@ -39,7 +39,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 0.4rem;
     overflow-x: auto;
 }
 .details-btn{
