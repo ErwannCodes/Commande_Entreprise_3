@@ -13,6 +13,8 @@ $postData = array_map('htmlspecialchars', $_POST);                              
 
 if(isset($postData["type"]) && $postData["type"]==="Adhésion simple personne morale"){
     $required = true;
+}else {
+    $required =false;
 }
 
 $validationRules = [
@@ -154,7 +156,6 @@ $valueOccupation = $postData['occupation'] ?? null;
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/css/submit-support.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -165,17 +166,65 @@ $valueOccupation = $postData['occupation'] ?? null;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
+<style>
+    /* Section globale */
+    body {
+        font-family: 'Host Grotesk', sans-serif;
+        color: #333; 
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        flex: 1;
+    }
+
+    .message {
+        background-image: url('/assets/images/maison-riviere.jpg');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat;
+        flex-direction: column;
+        justify-content: center; /* Centre verticalement */
+        align-items: center; /* Centre horizontalement */
+        height: 100vh; /* Prend toute la hauteur de la fenêtre */
+        display: flex;
+    }
+
+    /* Titre */
+    .title {
+        font-size: 2.5rem;
+        font-weight: 700; 
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    /* Sous-titre */
+    .subtitle {
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.6;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+        .title {
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+        }
+    }
+</style> 
+
 <body>
-    <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <p class="hero-title">Message bien reçu !</p>
-                <p class="hero-subtitle">Nous vous ferons un retour dès que possible !</span></p>
-            </div>
-        </section>
-    </main>
+    <div class="message">
+        <p class="title">Message bien reçu !</p>
+        <p class="subtitle">Nous vous ferons un retour dès que possible !</span></p>
+    </div>
 </body>
 
-<?php require_once(__DIR__.'/footer.php'); ?>    <!-- PAS SECURISE, A MODIFIER -->
+<?php require_once(__DIR__.'/footer.php'); ?>
 
 </html>
