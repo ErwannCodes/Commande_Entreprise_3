@@ -1,1 +1,3 @@
 .env
+.smtp_password.php
+.recipients.php

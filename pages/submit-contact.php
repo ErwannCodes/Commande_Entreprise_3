@@ -88,19 +88,124 @@ function validateInput(&$data, $rules) {   // Fonction générique qui va vérif
 $errors = validateInput($postData, $validationRules);
 
 if(!empty($errors)){
-    $_SESSION['errorsContact'] = $errors;           // Permet de passer les erreurs à la page "support.php"
+    $_SESSION['errorsContact'] = $errors;             // Permet de passer les erreurs à la page "support.php"
     $_SESSION['postedDataContact'] = $postData;      // Stocker les données du formulaire pour les reremplir après
-    header("Location: contact.php");              // Recharge la même page
+    header("Location: contact.php");                // Recharge la même page
     exit;
+} else {
+    $currentDateTime = date('Y-m-d H:i:s');
+
+    require_once '../vendor/autoload.php';
+    $emetteur = require 'email/mail_du_support.php';     // Mail du support
+    $password = require 'email/mdp_support.php';         // Mdp du mail du support
+    $destinataires = require 'email/destinataires.php';  // Mail des modérateurs susceptibles de répondre au mail
+    
+    $transport = (new Swift_SmtpTransport('z.imt.fr', 587))  // Création de l'instance SMTP
+        ->setUsername($emetteur)
+        ->setPassword($password)
+        ->setEncryption('tls');
+
+    $mailer = new Swift_Mailer($transport);
+
+    $message = (new Swift_Message('Question'))
+    ->setFrom([$emetteur => 'Support Maison De La Rivière'])
+    ->setTo([$destinataires => 'Modérateurs'])
+    ->setBody('
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <title>Question au support</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-image: url("https://source.unsplash.com/1600x900/?nature,forest");
+                    background-size: cover;
+                    background-position: center;
+                    color: #333;
+                    padding: 2rem;
+                }
+
+                .main-section {
+                    max-width: 600px;
+                    margin: 2rem auto;
+                    background-color: rgba(255, 255, 255, 0.9);
+                    border-radius: 10px;
+                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+                    padding: 2rem;
+                }
+
+                .page-header {
+                    text-align: center;
+                    padding: 1rem 0;
+                    background-color: #1E3A2B;
+                    color: white;
+                    border-radius: 10px 10px 0 0;
+                }
+
+                .page-header h1 {
+                    font-size: 1.8rem;
+                    margin: 0;
+                }
+
+                .introduction, .message {
+                    margin: 1rem 0;
+                    font-size: 1rem;
+                    line-height: 1.6;
+                }
+
+                .introduction strong {
+                    color: #1E3A2B;
+                }
+
+                .message {
+                    background-color: #f1f1f1;
+                    padding: 1.5rem;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    font-style: italic;
+                }
+
+                /* Responsiveness */
+                @media (max-width: 768px) {
+                    .main-section {
+                        padding: 1rem;
+                    }
+                    .page-header h1 {
+                        font-size: 1.5rem;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="main-section">
+                <header class="page-header">
+                    <h1>Nouveau message reçu !</h1>
+                </header>
+                <p class="introduction">
+                    <strong>' . htmlspecialchars($postData["first_name"]) . ' ' . htmlspecialchars($postData["last_name"]) . '</strong>
+                    vous a laissé un message :
+                </p>
+                <p class="message">
+                    ' . nl2br(htmlspecialchars($postData["message"])) . '
+                </p>
+                <p class="introduction">
+                    Vous pourrez répondre à cette personne à l\'adresse suivante :
+                    <strong>' . htmlspecialchars($postData["email"]) . '</strong>.
+                </p>
+            </div>
+        </body>
+        </html>
+    ', 'text/html')
+
+    ->addPart('');
+
+    $result = $mailer->send($message);      // Envoi du mail
 }
 
-$currentDateTime = date('Y-m-d H:i:s');
 
-try {
-
-} catch (PDOException $exception) {
-    // Envoi de mail à mdr pour signaler le problème
-}
 
 ?>
 
