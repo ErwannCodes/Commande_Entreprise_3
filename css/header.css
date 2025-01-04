@@ -133,50 +133,142 @@ body {
     background-color: #95cd63;
 }
 
-/* Responsive Design */
-@media (min-width: 768px) {
-    .main-nav {
-        display: block;
-    }
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it stays above other elements */
 }
-@media (max-width: 768px) {
-    /* Masque le menu principal et affiche le hamburger */
-    .main-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        background-color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 10;
+
+.hamburger:focus {
+    outline: none;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    background-color: black;
+    border-radius: 3px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Close button effect */
+.hamburger.close span:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+}
+
+.hamburger.close span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.close span:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -8px;
+}
+
+/* Hidden and visible nav menu */
+.hidden {
+    display: none !important;
+}
+
+.show {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    right: 10px; 
+    background-color: white;
+    padding: 1rem 1.5rem; /* Padding for content spacing */
+    border-radius: 10px; /* Add some rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+    z-index: 1000;
+    width: auto; /* Take only necessary width */
+    max-width: 300px; /* Optional max width for larger content */
+}
+
+.show ul {
+    flex-direction: column; /* Display items in a column */
+    gap: 1rem; /* Add spacing between items */
+    margin: 0;
+    padding: 0;
+}
+
+.show ul li {
+    list-style: none;
+}
+
+.show ul li a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    width: 100%; 
+}
+
+@media (max-width: 1167px) and (min-width: 993px) {
+    .main-nav ul {
+        gap: 1rem; /* Reduce the space between navigation items */
     }
 
+    .main-nav ul li a {
+        font-size: 0.9rem; /* Make the font size smaller */
+    }
+
+    .left-nav,
+    .right-nav {
+        top: 30%; /* Adjust positioning if necessary */
+    }
+
+    .join-btn {
+        padding: 0.4rem 1rem; /* Reduce button size */
+        font-size: 0.85rem; /* Adjust button font size */
+    }
+}
+@media (max-width: 992px) and (min-width: 876px) {
+    .main-nav ul {
+        gap: 0.5rem; /* Further reduce the space between navigation items */
+    }
+
+    .main-nav ul li a {
+        font-size: 0.8rem; /* Make the font size even smaller */
+    }
+
+    .left-nav,
+    .right-nav {
+        top: 35%; /* Adjust positioning to prevent overlap */
+    }
+
+    .join-btn {
+        padding: 0.3rem 0.8rem; /* Make the button even smaller */
+        font-size: 0.75rem; /* Adjust the button font size */
+    }
+}
+@media (max-width: 875px) {
     .hamburger {
         display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        margin-right: 2rem;
     }
 
-    .hamburger div {
-        width: 25px;
-        height: 3px;
-        background-color: black;
-        transition: all 0.3s ease-in-out;
+    .main-nav {
+        display: none;
     }
 
-    .main-nav.active {
+    .logo-section {
         display: flex;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
+        width: 100%;
     }
 }
+
+
 

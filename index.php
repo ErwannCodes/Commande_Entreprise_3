@@ -23,7 +23,7 @@
     <!-- Inclusion de l'en-tête -->
     <?php include 'pages/header.php'; ?>
     
-    <!-- Section héroïque -->
+    <!-- Première section page d'accueil -->
     <section class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
@@ -111,7 +111,7 @@
     <!-- Section des activités principales -->
     <section class="top-activities-section">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="#FFFFFF"><rect fill="#2A5B1F" width="100%" height="100%"/><path d="M0 0v100S0 4 500 4s500 96 500 96V0H0Z"></path></svg>
-        <div class="topAct-title-container">
+        <div>
             <h2 class="top-activities-title">Le top des <span style="color:rgb(115, 137, 108);">activités</span> <br>à faire sur place:
             </h2>
         </div>
@@ -138,8 +138,8 @@
 
     <!-- Section des expositions -->
     <section class="expositions-section">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="#2A5B1F"><rect fill="#E9F5E4" width="100%" height="100%"/><path d="M0 0v4s250 96 500 96 500-96 500-96V0H0Z"></path></svg>
-        <div class="expoSect-title-container">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="#2A5B1F"><rect fill="#E9F5E4" width="100%" height="100%"/><path d="M0 0v4s250 96 500 96 500-96 500-96V0H0Z"></path></svg> -->
+        <div>
             <h2 class="expoSect-title">Expositions Permanentes<br><span style="color:rgb(115, 137, 108);">et Programme Annuel</span>
             </h2>
         </div>
@@ -162,7 +162,7 @@
     <!-- Section du tiers-lieu -->
     <section class="tiers-lieu-section">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="#E9F5E4"><rect fill="#FFFFFF" width="100%" height="100%"/><path d="M0 0v99.7C62 69 122.4 48.7 205 66c83.8 17.6 160.5 20.4 240-12 54-22 110-26 173-10a392.2 392.2 0 0 0 222-5c55-17 110.3-36.9 160-27.2V0H0Z" opacity=".5"></path><path d="M0 0v74.7C62 44 122.4 28.7 205 46c83.8 17.6 160.5 25.4 240-7 54-22 110-21 173-5 76.5 19.4 146.5 23.3 222 0 55-17 110.3-31.9 160-22.2V0H0Z"></path></svg>
-        <div class="tiersLieu-title-container">
+        <div>
             <h2 class="tiersLieu-title">Le Tiers-Lieu de<br><span style="color:rgb(115, 137, 108);">Maison de la Rivière</span>
             </h2>
         </div>
@@ -186,7 +186,7 @@
     <!-- Section savoir-faire -->
     <section class="savoir-faire-section">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="#FFFFFF"><rect fill="#E9F5E4" width="100%" height="100%"/><path d="M0 0v4c136 143.8 183.8-73.2 297 26.6 72.2 63.7 97 99 184.7 33.2a30.5 30.5 0 0 1 36.6 0c87.6 65.8 112.5 30.5 184.7-33.2C816.2-69.2 864 147.7 1000 4V0H0Z"></path></svg>
-        <div class="savoirFaire-title-container">
+        <div>
             <h2 class="savoirFaire-title" style="margin-bottom: 5rem">Notre Savoir-faire
             </h2>
         </div>
