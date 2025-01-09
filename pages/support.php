@@ -81,7 +81,7 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
         <div id="dynamicField1">
             <div class="field_div">                  <!-- Nom de la structure -->
                 <label for="structure_name" class="form-label">Nom de la structure :</label>
-                <input type="text" class="form-control" id="structure_name" name="structure_name" value="<?php echo isset($postedDataSupport['structure_name']) ? htmlspecialchars($postedDataSupport['structure_name']) : ''; ?>" required>
+                <input type="text" class="form-control" id="structure_name" name="structure_name" value="<?php echo isset($postedDataSupport['structure_name']) ? htmlspecialchars($postedDataSupport['structure_name']) : ''; ?>" >
                 <?php if (isset($errors['structure_name'])): ?>
                     <p class="error-message"><?= htmlspecialchars($errors['structure_name']) ?></p>
                 <?php endif; ?>        
@@ -151,7 +151,7 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
         <div id="dynamicField2">
             <div class="field_div">                 <!-- Profession / Compétences -->
                 <label for="occupation" class="form-label">Profession / Compétences :</label>
-                <input type="text" class="form-control" id="occupation" name="occupation" value="<?= htmlspecialchars($postedDataSupport['occupation'] ?? '') ?>" required>
+                <input type="text" class="form-control" id="occupation" name="occupation" value="<?= htmlspecialchars($postedDataSupport['occupation'] ?? '') ?>" >
                 <?php if (isset($errors['occupation'])): ?>
                     <p class="error-message"><?= htmlspecialchars($errors['occupation']) ?></p>
                 <?php endif; ?>         

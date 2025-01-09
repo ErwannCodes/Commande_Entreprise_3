@@ -11,12 +11,6 @@ if (!isset($_POST['csrf_token_support']) || $_POST['csrf_token_support'] !== $_S
 
 $postData = array_map('htmlspecialchars', $_POST);   // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
 
-if(isset($postData["type"]) && $postData["type"]==="Adhésion simple personne morale"){
-    $required = true;
-}else {
-    $required =false;
-}
-
 $validationRules = [
     'first_name' => [
         'required' => true,
@@ -49,7 +43,7 @@ $validationRules = [
         ],
     ],
     'structure_name' => [
-        'required' => !$required,                                    // N'est requis que pour le cas d'un formulaire d'association ou d'entreprise 
+        'required' => $postData["type"] !== "simple personne morale",
         'regex' => "/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/",
         'max_length' => 100,
         'error_messages' => [
@@ -95,7 +89,7 @@ $validationRules = [
         ],
     ],
     'occupation' => [
-        'required' => $required,                             // N'est requis que pour un formulaire de personne morale
+        'required' => $postData["type"] === "simple personne morale",                             // N'est requis que pour un formulaire de personne morale
         'regex' => "/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'&]+$/",
         'max_length' => 50,
         'error_messages' => [
@@ -155,110 +149,113 @@ if(!empty($errors)){
 
     $mailer = new Swift_Mailer($transport);
 
+
+    $messageBody = '
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demande Adhésion</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url("https://source.unsplash.com/1600x900/?nature,forest");
+                background-size: cover;
+                background-position: center;
+                color: #333;
+                padding: 2rem;
+            }
+            .main-section {
+                max-width: 600px;
+                margin: 2rem auto;
+                background-color: rgba(255, 255, 255, 0.9);
+                border-radius: 10px;
+                padding: 2rem;
+            }
+            .page-header {
+                text-align: center;
+                padding: 1rem 0;
+                background-color: #1E3A2B;
+                color: white;
+                border-radius: 10px 10px 0 0;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+                margin: 0;
+            }
+            .introduction {
+                margin: 1rem 0;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            .introduction strong {
+                color: #1E3A2B;
+            }
+            .informations {
+                background-color: #f1f1f1;
+                color : #333;
+                padding: 1.5rem;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size : 1rem;
+            }
+            @media (max-width: 768px) {
+                .main-section {
+                    padding: 1rem;
+                }
+                .page-header h1 {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-section">
+            <header class="page-header">
+                <h1>Demande Adhésion</h1>
+            </header>
+            <p class="introduction">
+                <strong>' . htmlspecialchars($postData["first_name"]) . ' ' . htmlspecialchars($postData["last_name"]) . '</strong>
+                souhaite adhérer en tant que <strong>' . htmlspecialchars($postData["type"]) . '</strong>.
+            </p>
+            <div class="informations">
+    ';
+
+    if (isset($postData["structure_name"]) && !empty($postData["structure_name"])) {
+        $messageBody .= '<ul><strong>Entreprise : </strong>' . htmlspecialchars($postData["structure_name"]) . '</ul>';
+    }
+
+    $messageBody .= '
+        <ul><strong>Prénom : </strong>' . htmlspecialchars($postData["first_name"]) . '</ul>
+        <ul><strong>Nom : </strong>' . htmlspecialchars($postData["last_name"]) . '</ul>
+        <ul><strong>Adresse : </strong>' . htmlspecialchars($postData["adress"]) . '</ul>
+        <ul><strong>Code postal : </strong>' . htmlspecialchars($postData["postal_code"]) . '</ul>
+        <ul><strong>Ville : </strong>' . htmlspecialchars($postData["city"]) . '</ul>
+        <ul><strong>Email : </strong>' . htmlspecialchars($postData["email"]) . '</ul>
+        <ul><strong>Téléphone : </strong>' . htmlspecialchars($postData["phone"]) . '</ul>
+    ';
+
+    if (isset($postData["occupation"]) && !empty($postData["occupation"])) {
+        $messageBody .= '<ul><strong>Profession : </strong>' . htmlspecialchars($postData["occupation"]) . '</ul>';
+    }
+
+    if (isset($postData["remarque"]) && !empty($postData["remarque"])) {
+        $messageBody .= '<ul><strong>Remarque : </strong>' . htmlspecialchars($postData["remarque"]) . '</ul>';
+    }
+
+    $messageBody .= '
+                </div>
+            </div>
+        </body>
+        </html>
+    ';
+
     $message = (new Swift_Message("Demande d'adhésion"))
     ->setFrom([$emetteur => 'Support Maison De La Rivière'])
     ->setTo([$destinataires => 'Modérateurs'])
-    ->setBody('
-        <!DOCTYPE html>
-        <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <title>Demande Adhésion</title>
-
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                    background-image: url("https://source.unsplash.com/1600x900/?nature,forest");
-                    background-size: cover;
-                    background-position: center;
-                    color: #333;
-                    padding: 2rem;
-                }
-
-                .main-section {
-                    max-width: 600px;
-                    margin: 2rem auto;
-                    background-color: rgba(255, 255, 255, 0.9);
-                    border-radius: 10px;
-                    padding: 2rem;
-                }
-
-                .page-header {
-                    text-align: center;
-                    padding: 1rem 0;
-                    background-color: #1E3A2B;
-                    color: white;
-                    border-radius: 10px 10px 0 0;
-                }
-
-                .page-header h1 {
-                    font-size: 1.8rem;
-                    margin: 0;
-                }
-
-                .introduction {
-                    margin: 1rem 0;
-                    font-size: 1rem;
-                    line-height: 1.6;
-
-                }
-
-                .introduction strong {
-                    color: #1E3A2B;
-                }
-
-                .informations {
-                    background-color: #f1f1f1;
-                    color : #333;
-                    padding: 1.5rem;
-                    border: 1px solid #ddd;
-                    border-radius: 5px;
-                    font-size : 1rem;
-                }
-
-                /* Responsiveness */
-                @media (max-width: 768px) {
-                    .main-section {
-                        padding: 1rem;
-                    }
-                    .page-header h1 {
-                        font-size: 1.5rem;
-                    }
-                }
-            </style>
-
-        </head>
-        <body>
-    <div class="main-section">
-
-        <header class="page-header">
-            <h1>Demande Adhésion</h1>
-        </header>
-
-        <p class="introduction">
-            <strong>' . $postData["first_name"] . ' ' . $postData["last_name"] . '</strong>
-            souhaite adhérer en tant que <strong>'.$postData["type"]. '</strong>.
-        </p>
-
-        <div class="informations">
-            <ul> Entreprise : '.$postData["structure_name"].'</ul>
-            <ul> Prénom : '.$postData["first_name"].'</ul>
-            <ul> Nom : '.$postData["last_name"].'</ul>
-            <ul> Adresse : '.$postData["adress"].'</ul>
-            <ul> Code postal : '.$postData["postal_code"].'</ul>
-            <ul> Ville : '.$postData["city"].'</ul>
-            <ul> Email : '.$postData["email"].'</ul>
-            <ul> Téléphone : '.$postData["phone"].'</ul>
-            <ul> Profession : '.$postData["occupation"].'</ul>
-        </div>
-
-    </div>
-</body>
-        </html>
-    ', 'text/html')
-
+    ->setBody($messageBody, 'text/html')
     ->addPart('');
 
     $result = $mailer->send($message);      // Envoi du mail
@@ -309,10 +306,8 @@ $valueOccupation = $postData['occupation'] ?? null;
             align-items: center; /* Centre horizontalement */
             height: 100vh; /* Prend toute la hauteur de la fenêtre */
             display: flex;
-        }
+    }
 
-
-    
     .title {
         font-size: 2.5rem;
         font-weight: 700; 
