@@ -288,25 +288,6 @@ $valueOccupation = $postData['occupation'] ?? null;
 
 <style>
 
-    /* header 2 */
-
-    .header2 {
-    text-align: center;
-    padding: 2rem;
-    background-color: #1E3A2B;
-    color: white;
-    }
-
-    .header2 h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .header2 p {
-        font-size: 1.2rem;
-    }
-
-    /* Section globale */
     body {
         font-family: 'Host Grotesk', sans-serif;
         color: #333; 
@@ -319,13 +300,19 @@ $valueOccupation = $postData['occupation'] ?? null;
     }
 
     .message {
-        display: flex;
-        justify-content: center; /* Centre verticalement */
-        align-items: center; /* Centre horizontalement */
-        
-    }
+            background-image: url('/assets/images/maison-riviere.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            flex-direction: column;
+            justify-content: center; /* Centre verticalement */
+            align-items: center; /* Centre horizontalement */
+            height: 100vh; /* Prend toute la hauteur de la fenêtre */
+            display: flex;
+        }
 
-    /* Titre */
+
+    
     .title {
         font-size: 2.5rem;
         font-weight: 700; 
@@ -333,14 +320,12 @@ $valueOccupation = $postData['occupation'] ?? null;
         line-height: 1.2;
     }
 
-    /* Sous-titre */
     .subtitle {
         font-size: 1.2rem;
         font-weight: 400;
         line-height: 1.6;
     }   
 
-    /* Responsiveness */
     @media (max-width: 768px) {
         .title {
             font-size: 2rem;
@@ -353,11 +338,6 @@ $valueOccupation = $postData['occupation'] ?? null;
 </style> 
 
 <body>
-    <header class="header2">
-        <h1>Soutenir la Maison De La Rivière</h1>
-        <p>Devenez acteur dans la protection de notre environnement</p>
-    </header>
-
     <div class="message">
         <p class="title">Demande bien reçue !</p>
         <p class="subtitle">Nous vous ferons un retour par mail dès que possible !</span></p>

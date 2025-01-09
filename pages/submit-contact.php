@@ -122,7 +122,6 @@ if(!empty($errors)){
                     font-family: Arial, sans-serif;
                     margin: 0;
                     padding: 0;
-                    background-image: url("https://source.unsplash.com/1600x900/?nature,forest");
                     background-size: cover;
                     background-position: center;
                     color: #333;
@@ -221,7 +220,6 @@ if(!empty($errors)){
     <link rel="stylesheet" href="../css/footer.css">
 
     <style>
-        /* Section globale */
         body {
             font-family: 'Host Grotesk', sans-serif;
             color: #333; 
@@ -245,7 +243,6 @@ if(!empty($errors)){
             display: flex;
         }
 
-        /* Titre */
         .title {
             font-size: 2.5rem;
             font-weight: 700; 
@@ -253,14 +250,12 @@ if(!empty($errors)){
             line-height: 1.2;
         }
 
-        /* Sous-titre */
         .subtitle {
             font-size: 1.2rem;
             font-weight: 400;
             line-height: 1.6;
         }
 
-        /* Responsiveness */
         @media (max-width: 768px) {
             .title {
                 font-size: 2rem;

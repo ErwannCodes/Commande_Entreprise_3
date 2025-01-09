@@ -137,7 +137,15 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
             <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($postedDataSupport['email'] ?? '') ?>" required>
             <?php if (isset($errors['email'])): ?>
                 <p class="error-message"><?= htmlspecialchars($errors['email']) ?></p>
-            <?php endif; ?>        
+            <?php endif; ?>
+
+            <!-- Remarque --> 
+            <label for="remarque" class="form-label">Une remarque ? </label>
+            <input type="text" class="form-control" id="remarque" name="remarque"  value="<?= htmlspecialchars($postedDataSupport['remarque'] ?? '') ?>">
+            <?php if (isset($errors['remarque'])): ?>
+                <p class="error-message"><?= htmlspecialchars($errors['remarque']) ?></p>
+            <?php endif; ?>
+
         </div>
 
         <div id="dynamicField2">
@@ -149,7 +157,6 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
                 <?php endif; ?>         
             </div>
         </div>
-        
 
         <div class="buttondiv">                     <!-- Bouton d'envoi -->
             <button type="submit" class="btn btn-primary">Envoyer</button>

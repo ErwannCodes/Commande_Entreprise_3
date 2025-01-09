@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fonction pour mettre à jour les champs cachés
     function toggleForms() {
         const selectedOption = document.querySelector('input[name="formOption"]:checked');    // Récupère le bouton sélectionné
-        if (selectedOption) {                                                                // Si un bouton a été sélectionné
-            const value = selectedOption.value;                                             // Récupère la value du bouton
+        if (selectedOption) { 
+            const value = selectedOption.value;
+
             if (value === 'type1') {            // Adhésion d'une simple personne morale
                 field1.style.display = 'none';
                 field2.style.display = 'block';

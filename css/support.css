@@ -127,6 +127,12 @@ form button {
     justify-content: flex-start; /* Align text to the right of button */
 }
 
+
+textarea {
+    resize : none;
+    margin : 5px 0px 0px ;
+    padding : 10px;
+}
 form button span {
     margin-left: 10px; /* Adds space between the icon and the text */
 }
