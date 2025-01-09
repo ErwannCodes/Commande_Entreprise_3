@@ -141,11 +141,11 @@ if(!empty($errors)){
     header("Location: support.php");                // Recharge la même page
     exit;
 } else {
-    $currentDateTime = date('Y-m-d H:i:s');
+    $currentDateTime = date('d F Y à H:i');
 
     require_once '../vendor/autoload.php';
-    $emetteur = require 'email/mail_du_support.php';     // Mail du support
-    $password = require 'email/mdp_support.php';         // Mdp du mail du support
+    $emetteur = require 'email/mailsupport.php';        
+    $password = require 'email/mdpsupport.php';         
     $destinataires = require 'email/destinataires.php';  // Mail des modérateurs susceptibles de répondre au mail
     
     $transport = (new Swift_SmtpTransport('z.imt.fr', 587))  // Création de l'instance SMTP

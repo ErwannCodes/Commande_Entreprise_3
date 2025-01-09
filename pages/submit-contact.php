@@ -11,7 +11,7 @@ if (!isset($_POST['csrf_token_contact']) || $_POST['csrf_token_contact'] !== $_S
     die("Une erreur est survenue, veuillez réessayer plus tard.");
 }
 
-$postData = array_map('htmlspecialchars', $_POST);  // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
+$postData = $_POST;  // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
 
 $validationRules = [
     'first_name' => [
@@ -46,7 +46,7 @@ $validationRules = [
     ],
     'message' => [
         'required' => true,
-        'regex' => "/^[a-zA-Z0-9éèàùâêîôûäëïöüÀ-ÿ\s\-'\.]+$/",
+        'regex' => "/^[a-zA-Z0-9\s.,!?€=+;:\'()#$%^*+\-=&]+$/",
         'max_length' => 512,
         'error_messages' => [
             'required' => "Le message est requis.",
@@ -86,6 +86,7 @@ function validateInput(&$data, $rules) {   // Fonction générique qui va vérif
 }
 
 $errors = validateInput($postData, $validationRules);
+$postData = array_map('htmlspecialchars', $postData);
 
 if(!empty($errors)){
     $_SESSION['errorsContact'] = $errors;             // Permet de passer les erreurs à la page "support.php"
@@ -93,11 +94,11 @@ if(!empty($errors)){
     header("Location: contact.php");                // Recharge la même page
     exit;
 } else {
-    $currentDateTime = date('Y-m-d H:i:s');
+    $currentDateTime = date('d F Y à H:i');
 
     require_once '../vendor/autoload.php';
-    $emetteur = require 'email/mail_du_support.php';     // Mail du support
-    $password = require 'email/mdp_support.php';         // Mdp du mail du support
+    $emetteur = require 'email/mailsupport.php';     // Mail du support
+    $password = require 'email/mdpsupport.php';         // Mdp du mail du support
     $destinataires = require 'email/destinataires.php';  // Mail des modérateurs susceptibles de répondre au mail
     
     $transport = (new Swift_SmtpTransport('z.imt.fr', 587))  // Création de l'instance SMTP
