@@ -1,3 +1,3 @@
 <?php
-return 'nicolas.castel@imt-atlantique.net' //Entrer le entre les guillemets
+return 'castel.nico21@gmail.com' //Entrer le entre les guillemets
 ?>

@@ -51,20 +51,6 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
 
     <div class="buttons">
         <h1> Formules d'adhésion</h1>
-        
-        <!--
-        <input type="radio" id="option1" name="formOption" value="type1"> 
-        <label for="option1">Adhésion simple personne morale :       25 €</label> 
-        
-        <input type="radio" id="option2" name="formOption" value="type2"> 
-        <label for="option2">Adhésion association de soutien :       50 €</label> 
-
-        <input type="radio" id="option3" name="formOption" value="type3"> 
-        <label for="option1">Adhésion association de partenariat :   100 €</label> 
-        
-        <input type="radio" id="option4" name="formOption" value="type4"> 
-        <label for="option2">Adhésion entreprise :                   200€</label>
-        -->
 
         <label>
             <input type="radio" id="option1" name="formOption" value="type1">
@@ -77,19 +63,19 @@ if(empty($_SESSION["csrf_token_support"])){                  // Création d'un t
         </label>
         <br>
         <label>
-            <input type="radio" id="option3" name="formOption" value="type3">
+            <input type="radio" id="option3" name="formOption" value="type2">
             Adhésion association de partenariat :   100 €
         </label>
         <br>
         <label>
-            <input type="radio" id="option4" name="formOption" value="type4">
+            <input type="radio" id="option4" name="formOption" value="type2">
             Adhésion entreprise :                   200€        
         </label>
 
     </div>
 
-    <form action="submit-support.php" method="post" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="type" value="">
+    <form action="submit-support.php" method="POST" enctype="application/x-www-form-urlencoded">
+        <input id='type' type="hidden" name="type" value="">
         <input type="hidden" name="csrf_token_support" value="<?= htmlspecialchars($_SESSION['csrf_token_support']) ?>">
 
         <div id="dynamicField1">

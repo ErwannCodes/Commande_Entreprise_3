@@ -185,7 +185,7 @@ if(!empty($errors)){
                     <h1>Nouveau message reçu !</h1>
                 </header>
                 <p class="introduction">
-                    <strong>' . htmlspecialchars($postData["first_name"]) . ' ' . htmlspecialchars($postData["last_name"]) . '</strong>
+                    Le '.$currentDateTime.', <strong>' . htmlspecialchars($postData["first_name"]) . ' ' . htmlspecialchars($postData["last_name"]) . '</strong>
                     vous a laissé un message :
                 </p>
                 <p class="message">

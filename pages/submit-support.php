@@ -9,7 +9,7 @@ if (!isset($_POST['csrf_token_support']) || $_POST['csrf_token_support'] !== $_S
     die("Invalid CSRF token.");
 }
 
-$postData = array_map('htmlspecialchars', $_POST);                              // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
+$postData = array_map('htmlspecialchars', $_POST);   // On récupère les infos dans la superglobale $_POST (nom, prénom, mail etc.. )
 
 if(isset($postData["type"]) && $postData["type"]==="Adhésion simple personne morale"){
     $required = true;
@@ -136,13 +136,133 @@ function validateInput(&$data, $rules) {   // Fonction générique qui va vérif
 $errors = validateInput($postData, $validationRules);
 
 if(!empty($errors)){
-    $_SESSION['errorsSupport'] = $errors;          // Permet de passer les erreurs à la page "support.php"
+    $_SESSION['errorsSupport'] = $errors;           // Permet de passer les erreurs à la page "support.php"
     $_SESSION['postedDataSupport'] = $postData;     // Stocker les données du formulaire pour les reremplir après
-    header("Location: support.php");      // Recharge la même page
+    header("Location: support.php");                // Recharge la même page
     exit;
-}
+} else {
+    $currentDateTime = date('Y-m-d H:i:s');
 
-$currentDateTime = date('Y-m-d H:i:s');
+    require_once '../vendor/autoload.php';
+    $emetteur = require 'email/mail_du_support.php';     // Mail du support
+    $password = require 'email/mdp_support.php';         // Mdp du mail du support
+    $destinataires = require 'email/destinataires.php';  // Mail des modérateurs susceptibles de répondre au mail
+    
+    $transport = (new Swift_SmtpTransport('z.imt.fr', 587))  // Création de l'instance SMTP
+        ->setUsername($emetteur)
+        ->setPassword($password)
+        ->setEncryption('tls');
+
+    $mailer = new Swift_Mailer($transport);
+
+    $message = (new Swift_Message("Demande d'adhésion"))
+    ->setFrom([$emetteur => 'Support Maison De La Rivière'])
+    ->setTo([$destinataires => 'Modérateurs'])
+    ->setBody('
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <title>Demande Adhésion</title>
+
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-image: url("https://source.unsplash.com/1600x900/?nature,forest");
+                    background-size: cover;
+                    background-position: center;
+                    color: #333;
+                    padding: 2rem;
+                }
+
+                .main-section {
+                    max-width: 600px;
+                    margin: 2rem auto;
+                    background-color: rgba(255, 255, 255, 0.9);
+                    border-radius: 10px;
+                    padding: 2rem;
+                }
+
+                .page-header {
+                    text-align: center;
+                    padding: 1rem 0;
+                    background-color: #1E3A2B;
+                    color: white;
+                    border-radius: 10px 10px 0 0;
+                }
+
+                .page-header h1 {
+                    font-size: 1.8rem;
+                    margin: 0;
+                }
+
+                .introduction {
+                    margin: 1rem 0;
+                    font-size: 1rem;
+                    line-height: 1.6;
+
+                }
+
+                .introduction strong {
+                    color: #1E3A2B;
+                }
+
+                .informations {
+                    background-color: #f1f1f1;
+                    color : #333;
+                    padding: 1.5rem;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    font-size : 1rem;
+                }
+
+                /* Responsiveness */
+                @media (max-width: 768px) {
+                    .main-section {
+                        padding: 1rem;
+                    }
+                    .page-header h1 {
+                        font-size: 1.5rem;
+                    }
+                }
+            </style>
+
+        </head>
+        <body>
+    <div class="main-section">
+
+        <header class="page-header">
+            <h1>Demande Adhésion</h1>
+        </header>
+
+        <p class="introduction">
+            <strong>' . $postData["first_name"] . ' ' . $postData["last_name"] . '</strong>
+            souhaite adhérer en tant que <strong>'.$postData["type"]. '</strong>.
+        </p>
+
+        <div class="informations">
+            <ul> Entreprise : '.$postData["structure_name"].'</ul>
+            <ul> Prénom : '.$postData["first_name"].'</ul>
+            <ul> Nom : '.$postData["last_name"].'</ul>
+            <ul> Adresse : '.$postData["adress"].'</ul>
+            <ul> Code postal : '.$postData["postal_code"].'</ul>
+            <ul> Ville : '.$postData["city"].'</ul>
+            <ul> Email : '.$postData["email"].'</ul>
+            <ul> Téléphone : '.$postData["phone"].'</ul>
+            <ul> Profession : '.$postData["occupation"].'</ul>
+        </div>
+
+    </div>
+</body>
+        </html>
+    ', 'text/html')
+
+    ->addPart('');
+
+    $result = $mailer->send($message);      // Envoi du mail
+}
 
 $valueStructure = $postData['structure_name'] ?? null;
 $valueOccupation = $postData['occupation'] ?? null;
@@ -167,6 +287,25 @@ $valueOccupation = $postData['occupation'] ?? null;
 </head>
 
 <style>
+
+    /* header 2 */
+
+    .header2 {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1E3A2B;
+    color: white;
+    }
+
+    .header2 h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .header2 p {
+        font-size: 1.2rem;
+    }
+
     /* Section globale */
     body {
         font-family: 'Host Grotesk', sans-serif;
@@ -180,15 +319,10 @@ $valueOccupation = $postData['occupation'] ?? null;
     }
 
     .message {
-        background-image: url('/assets/images/maison-riviere.jpg');
-        background-size: cover; 
-        background-position: center; 
-        background-repeat: no-repeat;
-        flex-direction: column;
+        display: flex;
         justify-content: center; /* Centre verticalement */
         align-items: center; /* Centre horizontalement */
-        height: 100vh; /* Prend toute la hauteur de la fenêtre */
-        display: flex;
+        
     }
 
     /* Titre */
@@ -204,7 +338,7 @@ $valueOccupation = $postData['occupation'] ?? null;
         font-size: 1.2rem;
         font-weight: 400;
         line-height: 1.6;
-    }
+    }   
 
     /* Responsiveness */
     @media (max-width: 768px) {
@@ -219,9 +353,14 @@ $valueOccupation = $postData['occupation'] ?? null;
 </style> 
 
 <body>
+    <header class="header2">
+        <h1>Soutenir la Maison De La Rivière</h1>
+        <p>Devenez acteur dans la protection de notre environnement</p>
+    </header>
+
     <div class="message">
-        <p class="title">Message bien reçu !</p>
-        <p class="subtitle">Nous vous ferons un retour dès que possible !</span></p>
+        <p class="title">Demande bien reçue !</p>
+        <p class="subtitle">Nous vous ferons un retour par mail dès que possible !</span></p>
     </div>
 </body>
 
