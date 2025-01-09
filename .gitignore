@@ -1,6 +1,6 @@
 .env
 .smtp_password.php
 .recipients.php
-.mdp_support.php
-.mail_du_support.php
-.destinataires.php
+mdp_support.php
+mail_du_support.php
+destinataires.php
