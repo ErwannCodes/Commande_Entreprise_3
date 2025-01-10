@@ -108,9 +108,9 @@ if(!empty($errors)){
 
     $mailer = new Swift_Mailer($transport);
 
-    $message = (new Swift_Message('Question'))
+    $message = (new Swift_Message('Nouveau message reçu !'))
     ->setFrom([$emetteur => 'Support Maison De La Rivière'])
-    ->setTo([$destinataires => 'Modérateurs'])
+    ->setTo($destinataires)
     ->setBody('
         <!DOCTYPE html>
         <html lang="fr">

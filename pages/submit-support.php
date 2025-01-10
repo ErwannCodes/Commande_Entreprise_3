@@ -254,7 +254,7 @@ if(!empty($errors)){
 
     $message = (new Swift_Message("Demande d'adhésion"))
     ->setFrom([$emetteur => 'Support Maison De La Rivière'])
-    ->setTo([$destinataires => 'Modérateurs'])
+    ->setTo($destinataires)
     ->setBody($messageBody, 'text/html')
     ->addPart('');
 

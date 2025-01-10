@@ -1,0 +1,5 @@
+POINTS A ABORDER : 
+    - présenter la structure du site en soi
+    - envoie du mail ( destinataires et qui l'envoie )
+    - modifier une activité
+    - ajouter une page dans le header

@@ -1,3 +1,6 @@
 <?php
-return 'castel.nico21@gmail.com' //Entrer le entre les guillemets
+return [
+    'castel.nico21@gmail.com',                   // Premier destinataire
+    'nicolas.castel@imt-atlantique.net',        // Second destinataire
+];
 ?>
